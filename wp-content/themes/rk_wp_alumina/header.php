@@ -14,10 +14,13 @@
 <body>
 	<div class="container-fluid">	
 
-  	<?php
-      $custom_logo_id = get_theme_mod( 'custom_logo' );
+  		<!--Retrieve Site logo if set -->
+  		<?php
+      	$custom_logo_id = get_theme_mod( 'custom_logo' );
 			$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
 		?>
+
+		<!--Display Header Navigation set in admin pannel -->
 
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -54,6 +57,40 @@
 			   );
 			?>
 		</nav>
+
+		<!-- slider is a custom post type used to add slides to be displayed in the carausal -->
+		
+		<?php $slider = get_posts(array('post_type' => 'slider', 'posts_per_page' => 5)); ?>
+
+
+
+		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+
+				<?php $count = 0; ?>
+
+				<?php foreach($slider as $slide): ?>				
+
+					<div class="carousel-item <?php echo ($count==0)?'active':''; ?> ">
+						<img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($slide->ID)) ?>" class="d-block w-100" alt="" />
+					</div>
+
+					<?php $count++; ?>
+					
+				<?php endforeach;?>
+
+				
+				
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
 
 
 

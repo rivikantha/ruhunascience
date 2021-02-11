@@ -11,7 +11,9 @@ function theme_enqueue_scripts() {
 	wp_enqueue_style( 'Style', get_template_directory_uri() . '/css/style.css' );
 	wp_enqueue_script( 'jQuery', get_template_directory_uri() . '/js/jquery-3.5.1.min.js', array(), '3.5.1', true );
 	wp_enqueue_script( 'Tether', 'https://unpkg.com/@popperjs/core@2"', array(), '1.0.0', true );
-	wp_enqueue_script( 'Bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '1.0.0', true );        
+	wp_enqueue_script( 'Bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'Waypoing', get_template_directory_uri() . '/js/jquery.waypoints.min.js', array(), '4.0.1', true );
+	wp_enqueue_script( 'Countup', get_template_directory_uri() . '/js/jquery.countup.min.js', array(), '1.0.3', true );        
 
 }
 

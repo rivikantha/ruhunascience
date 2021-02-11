@@ -6,14 +6,21 @@ require_once('class-wp-bootstrap-navwalker.php');
  * Include CSS files
  */
 function theme_enqueue_scripts() {
+
+	//Css files
 	wp_enqueue_style( 'Font_Awesome', 'https://use.fontawesome.com/releases/v5.6.1/css/all.css' );
 	wp_enqueue_style( 'Bootstrap_css', get_template_directory_uri() . '/css/bootstrap.min.css' ); 
 	wp_enqueue_style( 'Style', get_template_directory_uri() . '/css/style.css' );
+
+
+	//Js files
+
 	wp_enqueue_script( 'jQuery', get_template_directory_uri() . '/js/jquery-3.5.1.min.js', array(), '3.5.1', true );
+	wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/jquery.waypoints.min.js', array(), '4.0.1', true );
+	wp_enqueue_script( 'countup', get_template_directory_uri() . '/js/jquery.countup.min.js', array(), '1.0.3', true );	
 	wp_enqueue_script( 'Tether', 'https://unpkg.com/@popperjs/core@2"', array(), '1.0.0', true );
 	wp_enqueue_script( 'Bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '1.0.0', true );
-	wp_enqueue_script( 'Waypoing', get_template_directory_uri() . '/js/jquery.waypoints.min.js', array(), '4.0.1', true );
-	wp_enqueue_script( 'Countup', get_template_directory_uri() . '/js/jquery.countup.min.js', array(), '1.0.3', true );        
+	      
 
 }
 

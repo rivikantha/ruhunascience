@@ -14,11 +14,7 @@
 <script>
 
 
-	$('.counter').countUp({
-    delay: 10,
-    time: 1500,
-});
-		
+	$('.counter').counterUp();
 
 
 

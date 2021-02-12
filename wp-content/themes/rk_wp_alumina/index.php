@@ -19,6 +19,8 @@
 			
 		<?php endforeach;?>
 
+		<?php wp_reset_query(); ?>
+
 		
 		
 	</div>
@@ -55,16 +57,62 @@
 
 
 <div class="row">
-	<div class="col text-center font-weight-bold p-5">
+	<div class="col-4 p-3">
 
-		
+		<?php $posts = get_posts(array('category__and' => 'event', 'posts_per_page' => 20)); ?>
+
+		<?php foreach($posts as $post): ?>				
+
+			<div class="carousel-item <?php echo ($count==0)?'active':''; ?> ">
+				<img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($slide->ID)) ?>" class="d-block w-100" alt="" />
+
+				<h3>Psycho Parade 2018 9.00 AM at School Premises </h3>
+			</div>
+
+			<?php $count++; ?>
+			
+		<?php endforeach;?>
+
+		<?php wp_reset_query(); ?>
+
+		<h3>Psycho Parade 2018 9.00 AM at School Premises </h3>
+
+		<h3>Psycho Parade 2018 9.00 AM at School Premises </h3>
+
+		<h3>Psycho Parade 2018 9.00 AM at School Premises </h3>
+
+		<h3>Psycho Parade 2018 9.00 AM at School Premises </span>	
 		
 		
 	</div>
 
-	<div class="col p-5">
+	<div class="col-8 p-3">
+
+		<h2>Mini Auditorium Opening Ceremony</h2>
+
+		<p>The 29th of September saw the successful completion and handing over of one of the largest infrastructure development projects in the history of the Old Boys Association of D.S. Senanayake College. This venture was commenced under the leadership of the OBA Senior President Madura Wickramaratne and the President Susantha Dissanayake.</p>
+
+		<br><br>
 
 		
+
+		<h2>Mini Auditorium Opening Ceremony</h2>
+
+		<p>The 29th of September saw the successful completion and handing over of one of the largest infrastructure development projects in the history of the Old Boys Association of D.S. Senanayake College. This venture was commenced under the leadership of the OBA Senior President Madura Wickramaratne and the President Susantha Dissanayake.</p>
+
+		<br><br>
+
+		<h2>Mini Auditorium Opening Ceremony</h2>
+
+		<p>The 29th of September saw the successful completion and handing over of one of the largest infrastructure development projects in the history of the Old Boys Association of D.S. Senanayake College. This venture was commenced under the leadership of the OBA Senior President Madura Wickramaratne and the President Susantha Dissanayake.</p>
+
+		<br><br>
+
+		<h2>Mini Auditorium Opening Ceremony</h2>
+
+		<p>The 29th of September saw the successful completion and handing over of one of the largest infrastructure development projects in the history of the Old Boys Association of D.S. Senanayake College. This venture was commenced under the leadership of the OBA Senior President Madura Wickramaratne and the President Susantha Dissanayake.</p>
+
+		<br><br>		
 		
 	</div>
 

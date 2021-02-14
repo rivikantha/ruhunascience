@@ -64,3 +64,21 @@ function register_rk_wp_alumina_menus() {
    );
  }
  add_action( 'init', 'register_rk_wp_alumina_menus' );
+
+
+
+
+function my_widgets_init() {
+	register_sidebar(array (
+		'name' => __('RK WP Alumina Index Page Sidebar Widget Area'),
+		'id' => 'rk_wp_alumina_index_sidebar',
+		'description' => __('Widdget area in the sidebar of body of page'),
+		'before_widget' => '',
+		'after_widget' => "",
+		'before_title' => '',
+		'after_title' => '',
+	));
+}
+add_action('widgets_init', 'my_widgets_init');
+
+

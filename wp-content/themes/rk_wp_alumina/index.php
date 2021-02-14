@@ -57,62 +57,47 @@
 
 
 <div class="row">
-	<div class="col-4 p-3">
+	<div class="col-4 p-5">
 
-		<?php $posts = get_posts(array('category__and' => 'event', 'posts_per_page' => 20)); ?>
+		<!-- <?php $the_query = new WP_Query( 'posts_per_page=5&category_name=Event' ); ?>
 
-		<?php foreach($posts as $post): ?>				
+		<?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
-			<div class="carousel-item <?php echo ($count==0)?'active':''; ?> ">
-				<img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($slide->ID)) ?>" class="d-block w-100" alt="" />
-
-				<h3>Psycho Parade 2018 9.00 AM at School Premises </h3>
-			</div>
-
-			<?php $count++; ?>
+			<strong>
+				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">	<?php the_title(); ?>				
+				</a>
+			</strong>			
 			
-		<?php endforeach;?>
+		<?php endwhile;?>
 
-		<?php wp_reset_query(); ?>
+		<?php //wp_reset_query(); ?> -->
 
-		<h3>Psycho Parade 2018 9.00 AM at School Premises </h3>
+		<?php dynamic_sidebar('RK WP Alumina Index Page Sidebar Widget Area');?>
 
-		<h3>Psycho Parade 2018 9.00 AM at School Premises </h3>
-
-		<h3>Psycho Parade 2018 9.00 AM at School Premises </h3>
-
-		<h3>Psycho Parade 2018 9.00 AM at School Premises </span>	
+			
 		
 		
 	</div>
 
 	<div class="col-8 p-3">
 
-		<h2>Mini Auditorium Opening Ceremony</h2>
 
-		<p>The 29th of September saw the successful completion and handing over of one of the largest infrastructure development projects in the history of the Old Boys Association of D.S. Senanayake College. This venture was commenced under the leadership of the OBA Senior President Madura Wickramaratne and the President Susantha Dissanayake.</p>
+		<?php $the_query = new WP_Query( 'posts_per_page=5&category_name=News' ); ?>
 
-		<br><br>
+		<?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
-		
+			<h3>
+			<strong>
+				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">	<?php the_title(); ?>				
+				</a>
+			</strong>
+			</h3>			
+			
+		<?php endwhile;?>
 
-		<h2>Mini Auditorium Opening Ceremony</h2>
+		<?php wp_reset_query(); ?>
 
-		<p>The 29th of September saw the successful completion and handing over of one of the largest infrastructure development projects in the history of the Old Boys Association of D.S. Senanayake College. This venture was commenced under the leadership of the OBA Senior President Madura Wickramaratne and the President Susantha Dissanayake.</p>
-
-		<br><br>
-
-		<h2>Mini Auditorium Opening Ceremony</h2>
-
-		<p>The 29th of September saw the successful completion and handing over of one of the largest infrastructure development projects in the history of the Old Boys Association of D.S. Senanayake College. This venture was commenced under the leadership of the OBA Senior President Madura Wickramaratne and the President Susantha Dissanayake.</p>
-
-		<br><br>
-
-		<h2>Mini Auditorium Opening Ceremony</h2>
-
-		<p>The 29th of September saw the successful completion and handing over of one of the largest infrastructure development projects in the history of the Old Boys Association of D.S. Senanayake College. This venture was commenced under the leadership of the OBA Senior President Madura Wickramaratne and the President Susantha Dissanayake.</p>
-
-		<br><br>		
+				
 		
 	</div>
 

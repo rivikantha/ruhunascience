@@ -55,31 +55,22 @@
 	</div>
 </div>
 
+<!--Sidebar beneath the carausal display-->
+
 
 <div class="row">
-	<div class="col-4 p-5">
 
-		<!-- <?php $the_query = new WP_Query( 'posts_per_page=5&category_name=Event' ); ?>
+	<!--Sidebar Left Wideget area Upcomming Events widget Event Calendar plugin -->
 
-		<?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+	<div class="col-4 p-5">		
 
-			<strong>
-				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">	<?php the_title(); ?>				
-				</a>
-			</strong>			
-			
-		<?php endwhile;?>
-
-		<?php //wp_reset_query(); ?> -->
-
-		<?php dynamic_sidebar('RK WP Alumina Index Page Sidebar Widget Area');?>
-
-			
-		
+		<?php dynamic_sidebar('RK WP Alumina Index Page Sidebar Widget Area');?>		
 		
 	</div>
 
-	<div class="col-8 p-3">
+	<!--Main Content Recent News-->
+
+	<div class="col-8 pt-5 pr-5 pl-0">
 
 
 		<?php $the_query = new WP_Query( 'posts_per_page=5&category_name=News' ); ?>
@@ -88,10 +79,16 @@
 
 			<h3>
 			<strong>
-				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">	<?php the_title(); ?>				
-				</a>
+				<!-- <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">	<?php the_title(); ?>				
+				</a> -->
+				<?php the_title(); ?>
 			</strong>
-			</h3>			
+			</h3>
+
+			<p><?php the_excerpt(); ?></p>
+
+			<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">	Read More 				
+				</a>			
 			
 		<?php endwhile;?>
 

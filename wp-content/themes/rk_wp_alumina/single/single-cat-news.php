@@ -41,7 +41,7 @@ get_header();
 				<h2 class="title">Latest post</h2>
 
 				<div class="item">
-					<div class="thumb item-thumbnail">
+					<div class="item-thumbnail">
 						<a href="https://cmb.ac.lk/online-hsk-test-confucius-institute/" title="Online HSK Test and Registration – Confucius Institute">
 							<div class="item-thumbnail">
 								<img src="https://cmb.ac.lk/wp-content/uploads/online-hsk-test-confucius-institute-80x80.jpg" class="attachment-thumb_80x80 size-thumb_80x80 wp-post-image" alt="" loading="lazy" srcset="https://cmb.ac.lk/wp-content/uploads/online-hsk-test-confucius-institute-80x80.jpg 80w, https://cmb.ac.lk/wp-content/uploads/online-hsk-test-confucius-institute-50x50.jpg 50w, https://cmb.ac.lk/wp-content/uploads/online-hsk-test-confucius-institute-263x263.jpg 263w, https://cmb.ac.lk/wp-content/uploads/online-hsk-test-confucius-institute-100x100.jpg 100w, https://cmb.ac.lk/wp-content/uploads/online-hsk-test-confucius-institute-255x255.jpg 255w" sizes="(max-width: 80px) 100vw, 80px" width="80" height="80">

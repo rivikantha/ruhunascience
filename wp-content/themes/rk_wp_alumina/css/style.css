@@ -10,11 +10,65 @@ Autohor URI: https://www.rk-soft.com
 */
 
 
-.latest-posts{
+.latest-posts .title{
 	margin-bottom: 27px;
 	font-size: 20px;
-	background-color: blue;
-	color:red;
+	text-transform: uppercase;
+}
+
+.latest-posts .item{
+
+	//display:block;
+	//width: 100%;
+	//margin-bottom:30px;
+}
+
+.item-thumbnail {
+    float: left;
+    margin-right: 15px;
+}
+
+.u-details.item-content span {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+/*.item-thumbnail {
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.item-thumbnail a {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: block;
+    transform: translate3d(0,0,0);
+}
+
+.item-thumbnail img {
+    width: 100%;
+    height: auto;
+    transition: all .4s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+ }
+
+ .main-color-1-bg{
+
+ 	background-color: #800080;
+
+ }*/
+
+ .thumbnail-hoverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: all .4s;
 }
 
 

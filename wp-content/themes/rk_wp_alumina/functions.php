@@ -10,7 +10,7 @@ function theme_enqueue_scripts() {
 	//Css files
 	wp_enqueue_style( 'Font_Awesome', 'https://use.fontawesome.com/releases/v5.6.1/css/all.css' );
 	wp_enqueue_style( 'Bootstrap_css', get_template_directory_uri() . '/css/bootstrap.min.css' ); 
-	wp_enqueue_style( 'Style', get_template_directory_uri() . '/css/style.css' );
+	wp_enqueue_style( 'Custom', get_template_directory_uri() . '/css/style.css' );
 
 
 	//Js files
@@ -80,5 +80,77 @@ function my_widgets_init() {
 	));
 }
 add_action('widgets_init', 'my_widgets_init');
+
+
+
+// Define a constant path to our single template folder 
+
+
+define('SINGLE_PATH', TEMPLATEPATH . '/single');  
+
+// Filter the single_template with our custom function 
+
+ 
+
+add_filter('single_template', 'my_single_template');  
+
+// Single template function which will choose our template 
+ 
+
+function my_single_template($single) { 
+	
+	global $wp_query, $post;  
+	
+	//Checks for single template by category 
+	//Check by category slug and ID 
+	
+	
+	foreach((array)get_the_category() as $cat){
+	
+		if(file_exists(SINGLE_PATH . '/single-cat-' . $cat->slug . '.php')) 
+			return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
+			
+		elseif(file_exists(SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php')) 
+			return SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php'; 
+
+		}
+		
+}
+
+
+//Short code to add recent news sidebar without plugin 
+
+function rk_postsbycategory($category_name = "news") {
+// the query
+$the_query = new WP_Query( array( 'category_name' => $category_name, 'posts_per_page' => 10 ) ); 
+ 
+// The Loop
+if ( $the_query->have_posts() ) {
+    $string .= '<ul class="postsbycategory widget_recent_entries">';
+    while ( $the_query->have_posts() ) {
+        $the_query->the_post();
+            if ( has_post_thumbnail() ) {
+            $string .= '<li>';
+            $string .= '<a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_post_thumbnail($post_id, array( 50, 50) ) . get_the_title() .'</a></li>';
+            } else { 
+            // if no featured image is found
+            $string .= '<li><a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_title() .'</a></li>';
+            }
+            }
+    } else {
+    // no posts found
+}
+$string .= '</ul>';
+ 
+return $string;
+ 
+/* Restore original Post Data */
+wp_reset_postdata();
+}
+// Add a shortcode
+add_shortcode('categoryposts', 'wpb_postsbycategory');
+ 
+// Enable shortcodes in text widgets
+add_filter('widget_text', 'do_shortcode');
 
 

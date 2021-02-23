@@ -10,7 +10,7 @@ function theme_enqueue_scripts() {
 	//Css files
 	wp_enqueue_style( 'Font_Awesome', 'https://use.fontawesome.com/releases/v5.6.1/css/all.css' );
 	wp_enqueue_style( 'Bootstrap_css', get_template_directory_uri() . '/css/bootstrap.min.css' ); 
-	wp_enqueue_style( 'Custom', get_template_directory_uri() . '/css/style.css' );
+	wp_enqueue_style( 'Custom', get_template_directory_uri() . '/css/style.css',array(), null, "all" );
 
 
 	//Js files
@@ -69,7 +69,9 @@ function register_rk_wp_alumina_menus() {
 
 
 function my_widgets_init() {
-	register_sidebar(array (
+	register_sidebar(
+
+		array (
 		'name' => __('RK WP Alumina Index Page Sidebar Widget Area'),
 		'id' => 'rk_wp_alumina_index_sidebar',
 		'description' => __('Widdget area in the sidebar of body of page'),
@@ -77,7 +79,24 @@ function my_widgets_init() {
 		'after_widget' => "",
 		'before_title' => '',
 		'after_title' => '',
-	));
+		)
+
+	);
+
+
+	register_sidebar(
+
+		array (
+		'name' => __('RK WP Alumina Recent News'),
+		'id' => 'rk_wp_alumina_recent_news_sidebar',
+		'description' => __('Widdget area for recent news'),
+		'before_widget' => '',
+		'after_widget' => "",
+		'before_title' => '',
+		'after_title' => '',
+		)
+
+	);
 }
 add_action('widgets_init', 'my_widgets_init');
 

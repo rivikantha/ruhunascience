@@ -39,23 +39,27 @@
 
 		  </a>
 
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNav">
 		  
 			<?php
 			   wp_nav_menu( array(
 			   'menu'              => 'Header Menu',
 			   'theme_location'    => 'header-menu',
 			   'depth'             => 2,
-			   'container'         => '<div>',
-			   'container_class'   => 'collapse navbar-collapse',
-			   'container_id'      => 'navbarSupportedConten',
+			   'container'         => '',
+			   'container_class'   => '',
+			   'container_id'      => '',
 			   'menu_class'        => 'navbar-nav ml-auto',
 			   'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
 			   'walker'            => new wp_bootstrap_navwalker())
 			   );
 			?>
+
+			</div>
 		</nav>
 
 		

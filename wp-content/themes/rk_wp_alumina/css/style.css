@@ -43,42 +43,20 @@ h1.news-title{
 
 
 }
-/*.item-thumbnail {
-    position: relative;
-    overflow: hidden;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
 
-.item-thumbnail a {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    display: block;
-    transform: translate3d(0,0,0);
-}
 
-.item-thumbnail img {
-    width: 100%;
-    height: auto;
-    transition: all .4s;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
- }
 
- .main-color-1-bg{
 
- 	background-color: #800080;
+/* These css is to customize recent news widget */
 
- }*/
+div.rpwwt-widget h1{
 
- .thumbnail-hoverlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    transition: all .4s;
+     font-size: 25px;
+    text-transform: uppercase;
 }
 
 
+.rpwwt-post-date{
+
+    font-size: 10px;
+}

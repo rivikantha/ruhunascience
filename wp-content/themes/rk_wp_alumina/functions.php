@@ -92,8 +92,8 @@ function my_widgets_init() {
 		'description' => __('Widdget area for recent news'),
 		'before_widget' => '',
 		'after_widget' => "",
-		'before_title' => '',
-		'after_title' => '',
+		'before_title' => '<h1>',
+		'after_title' => '</h1>',
 		)
 
 	);

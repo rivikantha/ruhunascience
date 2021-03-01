@@ -162,7 +162,7 @@ div.rpwwt-widget h1{
 
 .title-dashboard h3{
 
-    font-size: 24px;    
+    font-size: 30px;    
 }
 
 .heading-light{
@@ -177,7 +177,8 @@ div.rpwwt-widget h1{
     font-size: 18px;
     font-family: "Montserrat";
     font-weight: 400;
-    margin-top:35px;
+    margin-top:50px;
+    margin-bottom:25px;
 }
 
 .text-content p{
@@ -239,3 +240,42 @@ div.rpwwt-widget h1{
 }
 
 /* End of footer css */
+
+
+/* Stats area css */
+
+.stats{
+
+    background-color: #f7ca18;
+}
+
+.stats h3{
+
+    text-transform: uppercase;   
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-size: 20px;
+    color: #222222;
+
+}
+
+/* End of stats area css */
+
+
+/* Gallary css */
+
+
+.galary-icon-container{
+
+    color: #f7ca18;
+}
+
+.image-gallary-container h1{
+
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-size: 20px;
+    color: #222222;
+}
+
+/* End of gallary css */

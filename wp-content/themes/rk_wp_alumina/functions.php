@@ -8,7 +8,7 @@ require_once('class-wp-bootstrap-navwalker.php');
 function theme_enqueue_scripts() {
 
 	//Css files
-	wp_enqueue_style( 'Font_Awesome', 'https://use.fontawesome.com/releases/v5.6.1/css/all.css' );
+	wp_enqueue_style( 'Font_Awesome', get_template_directory_uri().'/fonts/fontawesome-free-5.15.2-web/css/all.css' );
 	wp_enqueue_style( 'Bootstrap_css', get_template_directory_uri() . '/css/bootstrap.min.css' ); 
 	//wp_enqueue_style( 'Custom', get_template_directory_uri() . '/css/style.css','','1.0.6');
 

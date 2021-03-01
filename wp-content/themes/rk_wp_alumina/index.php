@@ -34,35 +34,39 @@
 	</a>
 </div>
 
-<div class="row">
-	<div class="col bg-warning text-center font-weight-bold p-5" id="waypoint">
+<div class="stats">
+	<div class="row h-100 align-items-center">
 
-		<h1>Members: <span class="counter">150</span>+</h1>
-		
-		
+		<div class="col text-center font-weight-bold py-3">
+
+			<h3><i class="far fa-user"></i> Members: <span class="counter">150</span>+</h3>
+			
+			
+		</div>
+
+		<div class="col text-center font-weight-bold py-3">
+
+			<h3><i class="far fa-folder-open"></i> Projects: <span class="counter">10</span>+</h3>
+			
+		</div>
+
+		<div class="col text-center font-weight-bold py-3">
+
+			<h3><i class="far fa-calendar-check"></i> Get Togethers: <span class="counter">20</span>+</h3>
+			
+		</div>
 	</div>
 
-	<div class="col bg-warning text-center font-weight-bold p-5">
-
-		<h1>Projects: <span class="counter">10</span>+</h1>
-		
-	</div>
-
-	<div class="col bg-warning text-center font-weight-bold p-5">
-
-		<h1>Get Togethers: <span class="counter">20</span>+</h1>
-		
-	</div>
 </div>
 
 <!--Sidebar beneath the carausal display-->
 
 
-<div class="row">
+<div class="row border-bottom pb-5">
 
 	<!--Sidebar Left Wideget area Upcomming Events widget Event Calendar plugin -->
 
-	<div class="col-lg-4 col-sm-12 p-5">		
+	<div class="col-lg-4 col-sm-12 pt-3 pl-5 pb-0">		
 
 		<?php dynamic_sidebar('RK WP Alumina Index Page Sidebar Widget Area');?>		
 		
@@ -70,7 +74,7 @@
 
 	<!--Main Content Recent News-->
 
-	<div class="col-lg-8 col-sm-12 pl-4 pt-5 pr-5 pl-0">
+	<div class="col-lg-8 col-sm-12 pt-3 pl-5 pb-0">
 
 		<div class="title-dashboard">
 			<h3 class="heading-light">Latest News</h3>
@@ -102,26 +106,19 @@
 
 </div>
 
-<div class="image-gallary-container">
+<div class="image-gallary-container mt-5">
 
-	<div class="row">
+	<div class="row text-center">
 
 		<div class="col">
+
+			<div class="galary-icon-container mb-4">
+
+				<h1><i class="far fa-images"></i></h1>
+
+			</div>
 			
-			<?php 
-
-
-
-			dynamic_sidebar('RK WP Alumina Photo Gallary'); 
-
-
-
-
-
-			?>
-
-			
-
+			<?php dynamic_sidebar('RK WP Alumina Photo Gallary'); ?>
 
 		</div>
 		

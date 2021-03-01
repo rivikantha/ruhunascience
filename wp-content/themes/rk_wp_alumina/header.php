@@ -22,13 +22,13 @@
 
 		<!--Display Header Navigation set in admin pannel -->
 
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav id="main-menu" class="navbar navbar-expand-lg navbar-light bg-transparent">
 
 		  <a class="navbar-brand" href="#">
 
 		  	<?php if (has_custom_logo()): ?>
 
-				  <img src="<?php echo $logo[0]; ?>" class="mr-3" width="80" alt="<?php  echo get_bloginfo( 'name' ) ?>">
+				  <a href="https://www.ruhunascience.local/"><img src="<?php echo $logo[0]; ?>" class="mr-3" width="80" alt="<?php  echo get_bloginfo( 'name' ) ?>"></a>
 				  <?php echo get_bloginfo( 'name' ) ?>
 
 				<?php else: ?>

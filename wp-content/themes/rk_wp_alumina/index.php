@@ -62,7 +62,7 @@
 
 	<!--Sidebar Left Wideget area Upcomming Events widget Event Calendar plugin -->
 
-	<div class="col-4 p-5">		
+	<div class="col-lg-4 col-sm-12 p-5">		
 
 		<?php dynamic_sidebar('RK WP Alumina Index Page Sidebar Widget Area');?>		
 		
@@ -70,22 +70,24 @@
 
 	<!--Main Content Recent News-->
 
-	<div class="col-8 pt-5 pr-5 pl-0">
+	<div class="col-lg-8 col-sm-12 pl-4 pt-5 pr-5 pl-0">
+
+		<div class="title-dashboard">
+			<h3 class="heading-light">Latest News</h3>
+		</div>
 
 
 		<?php $the_query = new WP_Query( 'posts_per_page=5&category_name=News' ); ?>
 
 		<?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
-			<h3>
-			<strong>
-				<!-- <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">	<?php the_title(); ?>				
-				</a> -->
+			<h3 class="heading-regular">			
+				
 				<?php the_title(); ?>
-			</strong>
+			
 			</h3>
 
-			<p><?php the_excerpt(); ?></p>
+			<div class="text-content"><?php the_excerpt(); ?></div>
 
 			<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">	Read More 				
 				</a>			
@@ -100,13 +102,34 @@
 
 </div>
 
+<div class="image-gallary-container">
+
+	<div class="row">
+
+		<div class="col">
+			
+			<?php 
+
+
+
+			dynamic_sidebar('RK WP Alumina Photo Gallary'); 
 
 
 
 
 
+			?>
 
-    
+			
+
+
+		</div>
+		
+
+	</div> 
+
+</div>   
 
 
 <?php get_footer(); ?>
+

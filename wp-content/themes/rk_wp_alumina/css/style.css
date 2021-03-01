@@ -9,6 +9,11 @@ Autohor URI: https://www.rk-soft.com
 
 */
 
+@font-face {
+   font-family: Montserrat;
+   src: url(../fonts/Montserrat-Regular.otf);
+}
+
 
 .latest-posts .title{
 	margin-bottom: 27px;
@@ -60,3 +65,177 @@ div.rpwwt-widget h1{
 
     font-size: 10px;
 }
+
+
+
+/* Custom Css for Event List */
+
+.tribe-events-widget .tribe-events-widget-events-list__event-date-tag-month{
+    
+    color: #484848;
+    font-size: 12px;
+    font-family: "Montserrat";
+    font-weight: 400;
+    line-height: 2;
+    text-transform: uppercase;
+}
+
+
+.tribe-common .tribe-common-h2{
+
+    color: #f7ca18;
+}
+
+.tribe-common .tribe-common-h--alt{
+
+    font-family: "Montserrat";
+    font-weight: 400;
+}
+
+.tribe-common .tribe-common-h6{
+
+    font-size: 21px;
+}
+
+.tribe-events-widget .tribe-events-widget-events-list__header{
+
+    padding: 15px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.tribe-common .tribe-common-h7{
+
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 12px;
+}
+
+
+.tribe-common .tribe-common-b2{
+
+    color: #9f9f9f;
+    font-size: 11px;
+    line-height: 1.4;
+    font-family: "Montserrat";
+    font-weight: 400;
+}
+
+/* end of custom css for event list */
+
+
+
+/* Main Nav Bar Css */
+
+
+.navbar-light .navbar-nav .nav-link{
+
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 14px;    
+    text-transform: uppercase;
+    margin-left: 50px;
+    color: #1a265c;
+}
+
+.dropdown-item{
+
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 14px;    
+    text-transform: uppercase;
+    color: #1a265c;
+}
+
+
+/* end of Main Nav Bar css */
+
+
+
+
+/* Latest news css */
+
+.title-dashboard{
+
+    color: #484848;
+    margin-bottom: 5px;
+}
+
+.title-dashboard h3{
+
+    font-size: 24px;    
+}
+
+.heading-light{
+    font-family: "Montserrat";
+    font-weight: 400;
+    line-height: 2;
+}
+
+.heading-regular{
+
+    color: #484848;
+    font-size: 18px;
+    font-family: "Montserrat";
+    font-weight: 400;
+    margin-top:35px;
+}
+
+.text-content p{
+
+    font-size: 14px;
+    font-family: "Montserrat";
+    font-weight: 400;
+    line-height: 1.8;
+    color: #222222;
+}
+
+/* End of latest news css */
+
+/* Footer css */
+
+
+.footer-wrapper .foooter-container {
+    background-color: #fff;
+    padding: 55px 0 0;
+    line-height: 2;
+}
+
+
+.footer-wrapper .foooter-container .footer-middle{
+
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.footer-wrapper .foooter-container .footer-bottom {
+    padding: 30px 0;
+}
+
+.footer-wrapper .foooter-container .footer-bottom p {
+    color: #9f9f9f;
+    margin-bottom: 0px;
+    font-family: "Montserrat";
+}
+
+
+.footer-wrapper .foooter-container .footer-middle .links-footer h6 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #757575;
+}
+
+.heading-bold, .text-bold {
+    font-family: "Montserrat";
+    font-weight: 1000
+}
+
+.footer-wrapper .foooter-container .footer-middle .links-footer ul li a{
+
+    text-transform: uppercase;   
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 12px;
+    color: #222222;
+}
+
+/* End of footer css */

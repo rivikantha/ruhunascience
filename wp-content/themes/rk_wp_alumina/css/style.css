@@ -279,3 +279,19 @@ div.rpwwt-widget h1{
 }
 
 /* End of gallary css */
+
+
+/* Buddypress members directory css */
+
+
+.members-directory-container h3{
+
+    font-family: "Montserrat";
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 30px;
+    color: #5F090F;
+}
+
+
+/* End of buddypress members directory css */

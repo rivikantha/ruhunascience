@@ -2,68 +2,72 @@
 /**
  * BuddyPress - Members Single Group Invites
  *
- * @since 3.0.0
- * @version 3.1.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
+ * @version 3.0.0
  */
-?>
 
-<h2 class="screen-heading group-invites-screen"><?php esc_html_e( 'Group Invites', 'buddypress' ); ?></h2>
-
-<?php bp_nouveau_group_hook( 'before', 'invites_content' ); ?>
+/**
+ * Fires before the display of member group invites content.
+ *
+ * @since 1.1.0
+ */
+do_action( 'bp_before_group_invites_content' ); ?>
 
 <?php if ( bp_has_groups( 'type=invites&user_id=' . bp_loggedin_user_id() ) ) : ?>
 
-	<ul id="group-list" class="invites item-list bp-list" data-bp-list="groups_invites">
+	<h2 class="bp-screen-reader-text"><?php
+		/* translators: accessibility text */
+		_e( 'Group invitations', 'buddypress' );
+	?></h2>
 
-		<?php
-		while ( bp_groups() ) :
-			bp_the_group();
-		?>
+	<ul id="group-list" class="invites item-list">
 
-			<li class="item-entry invites-list" data-bp-item-id="<?php bp_group_id(); ?>" data-bp-item-component="groups">
+		<?php while ( bp_groups() ) : bp_the_group(); ?>
 
-				<div class="wrap">
-
+			<li>
 				<?php if ( ! bp_disable_group_avatar_uploads() ) : ?>
 					<div class="item-avatar">
-						<a href="<?php bp_group_permalink(); ?>"><?php bp_group_avatar(); ?></a>
+						<a href="<?php bp_group_permalink(); ?>"><?php bp_group_avatar( 'type=thumb&width=50&height=50' ); ?></a>
 					</div>
 				<?php endif; ?>
 
-					<div class="item">
-						<h2 class="list-title groups-title"><?php bp_group_link(); ?></h2>
-						<p class="meta group-details">
-							<span class="small">
-							<?php
-							printf(
-								/* translators: %s = number of members */
-								_n(
-									'%s member',
-									'%s members',
-									bp_get_group_total_members( false ),
-									'buddypress'
-								),
-								number_format_i18n( bp_get_group_total_members( false ) )
-							);
-							?>
-							</span>
-						</p>
-
-						<p class="desc">
-							<?php bp_group_description_excerpt(); ?>
-						</p>
-
-						<?php bp_nouveau_group_hook( '', 'invites_item' ); ?>
-
+				<h4>
+					<?php bp_group_link(); ?>
+					<span class="small">
+						&nbsp;-&nbsp;
 						<?php
-						bp_nouveau_groups_invite_buttons(
-							array(
-								'container'      => 'ul',
-								'button_element' => 'button',
-							)
-						);
+						/* translators: %s: group members count */
+						printf( _nx( '%d member', '%d members', bp_get_group_total_members( false ),'Group member count', 'buddypress' ), bp_get_group_total_members( false )  );
 						?>
-					</div>
+					</span>
+				</h4>
+
+				<p class="desc">
+					<?php bp_group_description_excerpt(); ?>
+				</p>
+
+				<?php
+
+				/**
+				 * Fires inside the display of a member group invite item.
+				 *
+				 * @since 1.1.0
+				 */
+				do_action( 'bp_group_invites_item' ); ?>
+
+				<div class="action">
+					<a class="button accept" href="<?php bp_group_accept_invite_link(); ?>"><?php _e( 'Accept', 'buddypress' ); ?></a> &nbsp;
+					<a class="button reject confirm" href="<?php bp_group_reject_invite_link(); ?>"><?php _e( 'Reject', 'buddypress' ); ?></a>
+
+					<?php
+
+					/**
+					 * Fires inside the member group item action markup.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_group_invites_item_action' ); ?>
 
 				</div>
 			</li>
@@ -71,11 +75,19 @@
 		<?php endwhile; ?>
 	</ul>
 
-<?php else : ?>
+<?php else: ?>
 
-	<?php bp_nouveau_user_feedback( 'member-invites-none' ); ?>
+	<div id="message" class="info">
+		<p><?php _e( 'You have no outstanding group invites.', 'buddypress' ); ?></p>
+	</div>
 
-<?php endif; ?>
+<?php endif;?>
 
 <?php
-bp_nouveau_group_hook( 'after', 'invites_content' );
+
+/**
+ * Fires after the display of member group invites content.
+ *
+ * @since 1.1.0
+ */
+do_action( 'bp_after_group_invites_content' );

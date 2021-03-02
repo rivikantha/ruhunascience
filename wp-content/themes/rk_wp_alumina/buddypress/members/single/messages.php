@@ -2,26 +2,109 @@
 /**
  * BuddyPress - Users Messages
  *
+ * @package BuddyPress
+ * @subpackage bp-legacy
  * @version 3.0.0
  */
+
 ?>
 
-<nav class="<?php bp_nouveau_single_item_subnav_classes(); ?>" id="subnav" role="navigation" aria-label="<?php esc_attr_e( 'Messages menu', 'buddypress' ); ?>">
-	<ul class="subnav">
+<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
+	<ul>
 
-		<?php bp_get_template_part( 'members/single/parts/item-subnav' ); ?>
+		<?php bp_get_options_nav(); ?>
 
 	</ul>
-</nav><!-- .bp-navs -->
+
+	<?php if ( bp_is_messages_inbox() || bp_is_messages_sentbox() ) : ?>
+
+		<div class="message-search"><?php bp_message_search_form(); ?></div>
+
+	<?php endif; ?>
+
+</div><!-- .item-list-tabs -->
 
 <?php
-if ( ! in_array( bp_current_action(), array( 'inbox', 'sentbox', 'starred', 'view', 'compose', 'notices' ), true ) ) :
+switch ( bp_current_action() ) :
 
-	bp_get_template_part( 'members/single/plugins' );
+	// Inbox/Sentbox
+	case 'inbox'   :
+	case 'sentbox' :
 
-else :
+		/**
+		 * Fires before the member messages content for inbox and sentbox.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_before_member_messages_content' ); ?>
 
-	bp_nouveau_messages_member_interface();
+		<?php if ( bp_is_messages_inbox() ) : ?>
+			<h2 class="bp-screen-reader-text"><?php
+				/* translators: accessibility text */
+				_e( 'Messages inbox', 'buddypress' );
+			?></h2>
+		<?php elseif ( bp_is_messages_sentbox() ) : ?>
+			<h2 class="bp-screen-reader-text"><?php
+				/* translators: accessibility text */
+				_e( 'Sent Messages', 'buddypress' );
+			?></h2>
+		<?php endif; ?>
 
-endif;
-?>
+		<div class="messages">
+			<?php bp_get_template_part( 'members/single/messages/messages-loop' ); ?>
+		</div><!-- .messages -->
+
+		<?php
+
+		/**
+		 * Fires after the member messages content for inbox and sentbox.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_after_member_messages_content' );
+		break;
+
+	// Single Message View
+	case 'view' :
+		bp_get_template_part( 'members/single/messages/single' );
+		break;
+
+	// Compose
+	case 'compose' :
+		bp_get_template_part( 'members/single/messages/compose' );
+		break;
+
+	// Sitewide Notices
+	case 'notices' :
+
+		/**
+		 * Fires before the member messages content for notices.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_before_member_messages_content' ); ?>
+
+		<h2 class="bp-screen-reader-text"><?php
+			/* translators: accessibility text */
+			_e( 'Sitewide Notices', 'buddypress' );
+		?></h2>
+
+		<div class="messages">
+			<?php bp_get_template_part( 'members/single/messages/notices-loop' ); ?>
+		</div><!-- .messages -->
+
+		<?php
+
+		/**
+		 * Fires after the member messages content for inbox and sentbox.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_after_member_messages_content' );
+		break;
+
+	// Any other
+	default :
+		bp_get_template_part( 'members/single/plugins' );
+		break;
+endswitch;

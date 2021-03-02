@@ -5,33 +5,63 @@
  * 3rd-party plugins should use this template to easily add template
  * support to their plugins for the members component.
  *
- * @since 3.0.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
  * @version 3.0.0
  */
 
-bp_nouveau_member_hook( 'before', 'plugin_template' ); ?>
+		/**
+		 * Fires at the start of the member plugin template.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_before_member_plugin_template' ); ?>
 
-<?php if ( ! bp_is_current_component_core() ) : ?>
+		<?php if ( ! bp_is_current_component_core() ) : ?>
 
-	<nav class="<?php bp_nouveau_single_item_subnav_classes(); ?>" id="subnav">
-		<ul class="subnav">
+		<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
+			<ul>
+				<?php bp_get_options_nav(); ?>
 
-			<?php bp_get_template_part( 'members/single/parts/item-subnav' ); ?>
+				<?php
 
-			<?php bp_nouveau_member_hook( '', 'plugin_options_nav' ); ?>
+				/**
+				 * Fires inside the member plugin template nav <ul> tag.
+				 *
+				 * @since 1.2.2
+				 */
+				do_action( 'bp_member_plugin_options_nav' ); ?>
+			</ul>
+		</div><!-- .item-list-tabs -->
 
-		</ul>
-	</nav>
+		<?php endif; ?>
 
-<?php endif; ?>
+		<?php if ( has_action( 'bp_template_title' ) ) : ?>
+			<h3><?php
 
-<?php if ( has_action( 'bp_template_title' ) ) : ?>
+			/**
+			 * Fires inside the member plugin template <h3> tag.
+			 *
+			 * @since 1.0.0
+			 */
+			do_action( 'bp_template_title' ); ?></h3>
 
-	<h2><?php bp_nouveau_plugin_hook( 'title' ); ?></h2>
+		<?php endif; ?>
 
-<?php endif; ?>
+		<?php
 
-<?php
-bp_nouveau_plugin_hook( 'content' );
+		/**
+		 * Fires and displays the member plugin template content.
+		 *
+		 * @since 1.0.0
+		 */
+		do_action( 'bp_template_content' ); ?>
 
-bp_nouveau_member_hook( 'after', 'plugin_template' );
+		<?php
+
+		/**
+		 * Fires at the end of the member plugin template.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_after_member_plugin_template' );

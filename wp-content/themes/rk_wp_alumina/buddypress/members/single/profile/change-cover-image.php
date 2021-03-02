@@ -2,23 +2,33 @@
 /**
  * BuddyPress - Members Profile Change Cover Image
  *
- * @since 3.0.0
- * @version 3.1.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
+ * @version 3.0.0
  */
 
 ?>
 
-<h2 class="screen-heading change-cover-image-screen"><?php esc_html_e( 'Change Cover Image', 'buddypress' ); ?></h2>
-
-<?php bp_nouveau_member_hook( 'before', 'edit_cover_image' ); ?>
-
-<p class="info bp-feedback">
-	<span class="bp-icon" aria-hidden="true"></span>
-	<span class="bp-help-text"><?php esc_html_e( 'Your Cover Image will be used to customize the header of your profile.', 'buddypress' ); ?></span>
-</p>
+<h2><?php _e( 'Change Cover Image', 'buddypress' ); ?></h2>
 
 <?php
-// Load the cover image UI
-bp_attachments_get_template_part( 'cover-images/index' );
 
-bp_nouveau_member_hook( 'after', 'edit_cover_image' );
+/**
+ * Fires before the display of profile cover image upload content.
+ *
+ * @since 2.4.0
+ */
+do_action( 'bp_before_profile_edit_cover_image' ); ?>
+
+<p><?php _e( 'Your Cover Image will be used to customize the header of your profile.', 'buddypress' ); ?></p>
+
+<?php bp_attachments_get_template_part( 'cover-images/index' ); ?>
+
+<?php
+
+/**
+ * Fires after the display of profile cover image upload content.
+ *
+ * @since 2.4.0
+ */
+do_action( 'bp_after_profile_edit_cover_image' );

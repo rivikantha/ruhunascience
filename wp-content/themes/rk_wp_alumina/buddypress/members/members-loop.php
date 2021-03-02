@@ -2,83 +2,154 @@
 /**
  * BuddyPress - Members Loop
  *
- * @since 3.0.0
- * @version 6.0.0
+ * Querystring is set via AJAX in _inc/ajax.php - bp_legacy_theme_object_filter()
+ *
+ * @package BuddyPress
+ * @subpackage bp-legacy
+ * @version 3.0.0
  */
 
-bp_nouveau_before_loop(); ?>
+/**
+ * Fires before the display of the members loop.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_before_members_loop' ); ?>
 
 <?php if ( bp_get_current_member_type() ) : ?>
-	<p class="current-member-type"><?php bp_current_member_type_message(); ?></p>
+	<p class="current-member-type"><?php bp_current_member_type_message() ?></p>
 <?php endif; ?>
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
 
-	<?php bp_nouveau_pagination( 'top' ); ?>
+	<div id="pag-top" class="pagination">
 
-	<ul id="members-list" class="<?php bp_nouveau_loop_classes(); ?>">
+		<div class="pag-count" id="member-dir-count-top">
+
+			<?php bp_members_pagination_count(); ?>
+
+		</div>
+
+		<div class="pagination-links" id="member-dir-pag-top">
+
+			<?php bp_members_pagination_links(); ?>
+
+		</div>
+
+	</div>
+
+	<?php
+
+	/**
+	 * Fires before the display of the members list.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'bp_before_directory_members_list' ); ?>
+
+	<ul id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
 
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 
-		<li <?php bp_member_class( array( 'item-entry' ) ); ?> data-bp-item-id="<?php bp_member_user_id(); ?>" data-bp-item-component="members">
-			<div class="list-wrap">
+		<li <?php bp_member_class(); ?>>
+			<div class="item-avatar">
+				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
+			</div>
 
-				<div class="item-avatar">
-					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar( bp_nouveau_avatar_args() ); ?></a>
-				</div>
+			<div class="item">
+				<div class="item-title">
+					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
 
-				<div class="item">
+					<?php if ( bp_get_member_latest_update() ) : ?>
 
-					<div class="item-block">
+						<span class="update"> <?php bp_member_latest_update(); ?></span>
 
-						<h2 class="list-title member-name">
-							<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
-						</h2>
-
-						<?php if ( bp_nouveau_member_has_meta() ) : ?>
-							<p class="item-meta last-activity">
-								<?php bp_nouveau_member_meta(); ?>
-							</p><!-- .item-meta -->
-						<?php endif; ?>
-
-						<?php if ( bp_nouveau_member_has_extra_content() ) : ?>
-							<div class="item-extra-content">
-								<?php bp_nouveau_member_extra_content() ; ?>
-							</div><!-- .item-extra-content -->
-						<?php endif ; ?>
-
-						<?php
-						bp_nouveau_members_loop_buttons(
-							array(
-								'container'      => 'ul',
-								'button_element' => 'button',
-							)
-						);
-						?>
-					</div>
-
-					<?php if ( bp_get_member_latest_update() && ! bp_nouveau_loop_is_grid() ) : ?>
-						<div class="user-update">
-							<p class="update"> <?php bp_member_latest_update(); ?></p>
-						</div>
 					<?php endif; ?>
 
-				</div><!-- // .item -->
+				</div>
+
+				<div class="item-meta"><span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span></div>
+
+				<?php
+
+				/**
+				 * Fires inside the display of a directory member item.
+				 *
+				 * @since 1.1.0
+				 */
+				do_action( 'bp_directory_members_item' ); ?>
+
+				<?php
+				 /***
+				  * If you want to show specific profile fields here you can,
+				  * but it'll add an extra query for each member in the loop
+				  * (only one regardless of the number of fields you show):
+				  *
+				  * bp_member_profile_data( 'field=the field name' );
+				  */
+				?>
 			</div>
+
+			<div class="action">
+
+				<?php
+
+				/**
+				 * Fires inside the members action HTML markup to display actions.
+				 *
+				 * @since 1.1.0
+				 */
+				do_action( 'bp_directory_members_actions' ); ?>
+
+			</div>
+
+			<div class="clear"></div>
 		</li>
 
 	<?php endwhile; ?>
 
 	</ul>
 
-	<?php bp_nouveau_pagination( 'bottom' ); ?>
+	<?php
+
+	/**
+	 * Fires after the display of the members list.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'bp_after_directory_members_list' ); ?>
+
+	<?php bp_member_hidden_fields(); ?>
+
+	<div id="pag-bottom" class="pagination">
+
+		<div class="pag-count" id="member-dir-count-bottom">
+
+			<?php bp_members_pagination_count(); ?>
+
+		</div>
+
+		<div class="pagination-links" id="member-dir-pag-bottom">
+
+			<?php bp_members_pagination_links(); ?>
+
+		</div>
+
+	</div>
+
+<?php else: ?>
+
+	<div id="message" class="info">
+		<p><?php _e( "Sorry, no members were found.", 'buddypress' ); ?></p>
+	</div>
+
+<?php endif; ?>
 
 <?php
-else :
 
-	bp_nouveau_user_feedback( 'members-loop-none' );
-
-endif;
-?>
-
-<?php bp_nouveau_after_loop(); ?>
+/**
+ * Fires after the display of the members loop.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_after_members_loop' );

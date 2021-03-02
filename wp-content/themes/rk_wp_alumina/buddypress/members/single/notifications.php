@@ -2,39 +2,36 @@
 /**
  * BuddyPress - Users Notifications
  *
- * @since 3.0.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
  * @version 3.0.0
  */
+
 ?>
 
-<nav class="<?php bp_nouveau_single_item_subnav_classes(); ?>" id="subnav" role="navigation" aria-label="<?php esc_attr_e( 'Notifications menu', 'buddypress' ); ?>">
-	<ul class="subnav">
+<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
+	<ul>
+		<?php bp_get_options_nav(); ?>
 
-		<?php bp_get_template_part( 'members/single/parts/item-subnav' ); ?>
-
+		<li id="members-order-select" class="last filter">
+			<?php bp_notifications_sort_order_form(); ?>
+		</li>
 	</ul>
-</nav>
+</div>
 
 <?php
 switch ( bp_current_action() ) :
 
-	case 'unread':
-	case 'read':
-	?>
+	case 'unread' :
+		bp_get_template_part( 'members/single/notifications/unread' );
+		break;
 
-
-	<?php bp_get_template_part( 'common/search-and-filters-bar' ); ?>
-
-
-		<div id="notifications-user-list" class="notifications dir-list" data-bp-list="notifications">
-			<div id="bp-ajax-loader"><?php bp_nouveau_user_feedback( 'member-notifications-loading' ); ?></div>
-		</div><!-- #groups-dir-list -->
-
-		<?php
+	case 'read' :
+		bp_get_template_part( 'members/single/notifications/read' );
 		break;
 
 	// Any other actions.
-	default:
+	default :
 		bp_get_template_part( 'members/single/plugins' );
 		break;
 endswitch;

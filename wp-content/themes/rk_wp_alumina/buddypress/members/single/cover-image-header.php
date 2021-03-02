@@ -2,13 +2,24 @@
 /**
  * BuddyPress - Users Cover Image Header
  *
- * @since 3.0.0
- * @version 7.0.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
+ * @version 3.0.0
  */
+
 ?>
 
+<?php
+
+/**
+ * Fires before the display of a member's header.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_before_member_header' ); ?>
+
 <div id="cover-image-container">
-	<div id="header-cover-image"></div>
+	<a id="header-cover-image" href="<?php bp_displayed_user_link(); ?>"></a>
 
 	<div id="item-header-cover-image">
 		<div id="item-header-avatar">
@@ -25,40 +36,72 @@
 				<h2 class="user-nicename">@<?php bp_displayed_user_mentionname(); ?></h2>
 			<?php endif; ?>
 
-			<?php
-			bp_nouveau_member_header_buttons(
-				array(
-					'container'         => 'ul',
-					'button_element'    => 'button',
-					'container_classes' => array( 'member-header-actions' ),
-				)
-			);
-			?>
+			<div id="item-buttons"><?php
 
-			<?php bp_nouveau_member_hook( 'before', 'header_meta' ); ?>
+				/**
+				 * Fires in the member header actions section.
+				 *
+				 * @since 1.2.6
+				 */
+				do_action( 'bp_member_header_actions' ); ?></div><!-- #item-buttons -->
 
-			<?php if ( bp_nouveau_member_has_meta() ) : ?>
-				<div class="item-meta">
-
-					<?php bp_nouveau_member_meta(); ?>
-
-				</div><!-- #item-meta -->
-			<?php endif; ?>
+			<span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_user_last_activity( bp_displayed_user_id() ) ); ?>"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 
 			<?php
-			bp_member_type_list(
-				bp_displayed_user_id(),
-				array(
-					'label'        => array(
-						'plural'   => __( 'Member Types', 'buddypress' ),
-						'singular' => __( 'Member Type', 'buddypress' ),
-					),
-					'list_element' => 'span',
-				)
-			);
-			?>
+
+			/**
+			 * Fires before the display of the member's header meta.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'bp_before_member_header_meta' ); ?>
+
+			<div id="item-meta">
+
+				<?php if ( bp_is_active( 'activity' ) ) : ?>
+
+					<div id="latest-update">
+
+						<?php bp_activity_latest_update( bp_displayed_user_id() ); ?>
+
+					</div>
+
+				<?php endif; ?>
+
+				<?php
+
+				 /**
+				  * Fires after the group header actions section.
+				  *
+				  * If you'd like to show specific profile fields here use:
+				  * bp_member_profile_data( 'field=About Me' ); -- Pass the name of the field
+				  *
+				  * @since 1.2.0
+				  */
+				 do_action( 'bp_profile_header_meta' );
+
+				 ?>
+
+			</div><!-- #item-meta -->
 
 		</div><!-- #item-header-content -->
 
 	</div><!-- #item-header-cover-image -->
 </div><!-- #cover-image-container -->
+
+<?php
+
+/**
+ * Fires after the display of a member's header.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_after_member_header' ); ?>
+
+<div id="template-notices" role="alert" aria-atomic="true">
+	<?php
+
+	/** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
+	do_action( 'template_notices' ); ?>
+
+</div>

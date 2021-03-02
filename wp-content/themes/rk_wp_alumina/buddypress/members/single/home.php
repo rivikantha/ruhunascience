@@ -2,31 +2,118 @@
 /**
  * BuddyPress - Members Home
  *
- * @since   1.0.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
  * @version 3.0.0
  */
+
 ?>
 
-	<?php bp_nouveau_member_hook( 'before', 'home_content' ); ?>
+<div id="buddypress">
 
-	<div id="item-header" role="complementary" data-bp-item-id="<?php echo esc_attr( bp_displayed_user_id() ); ?>" data-bp-item-component="members" class="users-header single-headers">
+	<?php
 
-		<?php bp_nouveau_member_header_template_part(); ?>
+	/**
+	 * Fires before the display of member home content.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'bp_before_member_home_content' ); ?>
+
+	<div id="item-header" role="complementary">
+
+		<?php
+		/**
+		 * If the cover image feature is enabled, use a specific header
+		 */
+		if ( bp_displayed_user_use_cover_image_header() ) :
+			bp_get_template_part( 'members/single/cover-image-header' );
+		else :
+			bp_get_template_part( 'members/single/member-header' );
+		endif;
+		?>
 
 	</div><!-- #item-header -->
 
-	<div class="bp-wrap">
-		<?php if ( ! bp_nouveau_is_object_nav_in_sidebar() ) : ?>
+	<div id="item-nav">
+		<div class="item-list-tabs no-ajax" id="object-nav" aria-label="<?php esc_attr_e( 'Member primary navigation', 'buddypress' ); ?>" role="navigation">
+			<ul>
 
-			<?php bp_get_template_part( 'members/single/parts/item-nav' ); ?>
+				<?php bp_get_displayed_user_nav(); ?>
 
-		<?php endif; ?>
+				<?php
 
-		<div id="item-body" class="item-body">
+				/**
+				 * Fires after the display of member options navigation.
+				 *
+				 * @since 1.2.4
+				 */
+				do_action( 'bp_member_options_nav' ); ?>
 
-			<?php bp_nouveau_member_template_part(); ?>
+			</ul>
+		</div>
+	</div><!-- #item-nav -->
 
-		</div><!-- #item-body -->
-	</div><!-- // .bp-wrap -->
+	<div id="item-body">
 
-	<?php bp_nouveau_member_hook( 'after', 'home_content' ); ?>
+		<?php
+
+		/**
+		 * Fires before the display of member body content.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_before_member_body' );
+
+		if ( bp_is_user_front() ) :
+			bp_displayed_user_front_template_part();
+
+		elseif ( bp_is_user_activity() ) :
+			bp_get_template_part( 'members/single/activity' );
+
+		elseif ( bp_is_user_blogs() ) :
+			bp_get_template_part( 'members/single/blogs'    );
+
+		elseif ( bp_is_user_friends() ) :
+			bp_get_template_part( 'members/single/friends'  );
+
+		elseif ( bp_is_user_groups() ) :
+			bp_get_template_part( 'members/single/groups'   );
+
+		elseif ( bp_is_user_messages() ) :
+			bp_get_template_part( 'members/single/messages' );
+
+		elseif ( bp_is_user_profile() ) :
+			bp_get_template_part( 'members/single/profile'  );
+
+		elseif ( bp_is_user_notifications() ) :
+			bp_get_template_part( 'members/single/notifications' );
+
+		elseif ( bp_is_user_settings() ) :
+			bp_get_template_part( 'members/single/settings' );
+
+		// If nothing sticks, load a generic template
+		else :
+			bp_get_template_part( 'members/single/plugins'  );
+
+		endif;
+
+		/**
+		 * Fires after the display of member body content.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_after_member_body' ); ?>
+
+	</div><!-- #item-body -->
+
+	<?php
+
+	/**
+	 * Fires after the display of member home content.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'bp_after_member_home_content' ); ?>
+
+</div><!-- #buddypress -->

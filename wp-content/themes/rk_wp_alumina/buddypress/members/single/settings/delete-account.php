@@ -1,29 +1,63 @@
 <?php
 /**
- * BuddyPress - Members Settings ( Delete Account )
+ * BuddyPress - Members Settings Delete Account
  *
- * @since 3.0.0
- * @version 7.0.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
+ * @version 3.0.0
  */
 
-bp_nouveau_member_hook( 'before', 'settings_template' ); ?>
+/** This action is documented in bp-templates/bp-legacy/buddypress/members/single/settings/profile.php */
+do_action( 'bp_before_member_settings_template' ); ?>
 
-<h2 class="screen-heading delete-account-screen warn">
-	<?php esc_html_e( 'Delete Account', 'buddypress' ); ?>
-</h2>
+<div id="message" class="info">
 
-<?php bp_nouveau_user_feedback( 'member-delete-account' ); ?>
+	<?php if ( bp_is_my_profile() ) : ?>
 
-<form action="<?php echo esc_url( bp_displayed_user_domain() . bp_get_settings_slug() . '/delete-account' ); ?>" name="account-delete-form" id="account-delete-form" class="standard-form" method="post">
+		<p><?php _e( 'Deleting your account will delete all of the content you have created. It will be completely irrecoverable.', 'buddypress' ); ?></p>
 
-	<label id="delete-account-understand" class="warn" for="delete-account-understand">
-		<input class="disabled" type="checkbox" name="delete-account-understand" value="1" data-bp-disable-input="delete-account-button" />
-		<?php esc_html_e( 'I understand the consequences.', 'buddypress' ); ?>
+	<?php else : ?>
+
+		<p><?php _e( 'Deleting this account will delete all of the content it has created. It will be completely irrecoverable.', 'buddypress' ); ?></p>
+
+	<?php endif; ?>
+
+</div>
+
+<form action="<?php echo bp_displayed_user_domain() . bp_get_settings_slug() . '/delete-account'; ?>" name="account-delete-form" id="account-delete-form" class="standard-form" method="post">
+
+	<?php
+
+	/**
+	 * Fires before the display of the submit button for user delete account submitting.
+	 *
+	 * @since 1.5.0
+	 */
+	do_action( 'bp_members_delete_account_before_submit' ); ?>
+
+	<label for="delete-account-understand">
+		<input type="checkbox" name="delete-account-understand" id="delete-account-understand" value="1" onclick="if(this.checked) { document.getElementById('delete-account-button').disabled = ''; } else { document.getElementById('delete-account-button').disabled = 'disabled'; }" />
+		 <?php _e( 'I understand the consequences.', 'buddypress' ); ?>
 	</label>
 
-	<?php bp_nouveau_submit_button( 'member-delete-account' ); ?>
+	<div class="submit">
+		<input type="submit" disabled="disabled" value="<?php esc_attr_e( 'Delete Account', 'buddypress' ); ?>" id="delete-account-button" name="delete-account-button" />
+	</div>
+
+	<?php
+
+	/**
+	 * Fires after the display of the submit button for user delete account submitting.
+	 *
+	 * @since 1.5.0
+	 */
+	do_action( 'bp_members_delete_account_after_submit' ); ?>
+
+	<?php wp_nonce_field( 'delete-account' ); ?>
 
 </form>
 
 <?php
-bp_nouveau_member_hook( 'after', 'settings_template' );
+
+/** This action is documented in bp-templates/bp-legacy/buddypress/members/single/settings/profile.php */
+do_action( 'bp_after_member_settings_template' );

@@ -1,27 +1,49 @@
 <?php
 /**
- * BuddyPress - Members Settings ( Capabilities )
+ * BuddyPress - Members Settings Capabilities
  *
- * @since 3.0.0
- * @version 3.1.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
+ * @version 3.0.0
  */
 
-bp_nouveau_member_hook( 'before', 'settings_template' ); ?>
+/** This action is documented in bp-templates/bp-legacy/buddypress/members/single/settings/profile.php */
+do_action( 'bp_before_member_settings_template' ); ?>
 
-<h2 class="screen-heading member-capabilities-screen">
-	<?php esc_html_e( 'Members Capabilities', 'buddypress' ); ?>
-</h2>
+<form action="<?php echo bp_displayed_user_domain() . bp_get_settings_slug() . '/capabilities/'; ?>" name="account-capabilities-form" id="account-capabilities-form" class="standard-form" method="post">
 
-<form action="<?php echo esc_url( bp_displayed_user_domain() . bp_get_settings_slug() . '/capabilities/' ); ?>" name="account-capabilities-form" id="account-capabilities-form" class="standard-form" method="post">
+	<?php
+
+	/**
+	 * Fires before the display of the submit button for user capabilities saving.
+	 *
+	 * @since 1.6.0
+	 */
+	do_action( 'bp_members_capabilities_account_before_submit' ); ?>
 
 	<label for="user-spammer">
 		<input type="checkbox" name="user-spammer" id="user-spammer" value="1" <?php checked( bp_is_user_spammer( bp_displayed_user_id() ) ); ?> />
-			<?php esc_html_e( 'This member is a spammer.', 'buddypress' ); ?>
+		 <?php _e( 'This user is a spammer.', 'buddypress' ); ?>
 	</label>
 
-	<?php bp_nouveau_submit_button( 'member-capabilities' ); ?>
+	<div class="submit">
+		<input type="submit" value="<?php esc_attr_e( 'Save', 'buddypress' ); ?>" id="capabilities-submit" name="capabilities-submit" />
+	</div>
+
+	<?php
+
+	/**
+	 * Fires after the display of the submit button for user capabilities saving.
+	 *
+	 * @since 1.6.0
+	 */
+	do_action( 'bp_members_capabilities_account_after_submit' ); ?>
+
+	<?php wp_nonce_field( 'capabilities' ); ?>
 
 </form>
 
 <?php
-bp_nouveau_member_hook( 'after', 'settings_template' );
+
+/** This action is documented in bp-templates/bp-legacy/buddypress/members/single/settings/profile.php */
+do_action( 'bp_after_member_settings_template' );

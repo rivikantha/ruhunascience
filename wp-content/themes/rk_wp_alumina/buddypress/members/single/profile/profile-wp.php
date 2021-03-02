@@ -2,54 +2,114 @@
 /**
  * BuddyPress - Members Single Profile WP
  *
- * @since 3.0.0
- * @version 3.1.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
+ * @version 3.0.0
  */
 
-bp_nouveau_wp_profile_hooks( 'before' ); ?>
+/**
+ * Fires before the display of member profile loop content.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_before_profile_loop_content' ); ?>
 
-<div class="bp-widget wp-profile">
+<?php $ud = get_userdata( bp_displayed_user_id() ); ?>
 
-	<h2 class="screen-heading wp-profile-screen">
-		<?php
-		if ( bp_is_my_profile() ) {
-			esc_html_e( 'My Profile', 'buddypress' );
-		} else {
-			printf(
-				/* Translators: a member's profile, e.g. "Paul's profile". */
-				__( "%s's Profile", 'buddypress' ),
-				bp_get_displayed_user_fullname()
-			);
-		}
-		?>
-	</h2>
+<?php
 
-	<?php if ( bp_nouveau_has_wp_profile_fields() ) : ?>
+	/**
+	 * Fires before the display of member profile field content.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'bp_before_profile_field_content' ); ?>
+
+	<div class="bp-widget wp-profile">
+		<h2><?php bp_is_my_profile() ? _e( 'My Profile', 'buddypress' ) : printf( __( "%s's Profile", 'buddypress' ), bp_get_displayed_user_fullname() ); ?></h2>
 
 		<table class="wp-profile-fields">
 
-			<?php
-			while ( bp_nouveau_wp_profile_fields() ) :
-				bp_nouveau_wp_profile_field();
-			?>
+			<?php if ( $ud->display_name ) : ?>
 
-				<tr id="<?php bp_nouveau_wp_profile_field_id(); ?>">
-					<td class="label"><?php bp_nouveau_wp_profile_field_label(); ?></td>
-					<td class="data"><?php bp_nouveau_wp_profile_field_data(); ?></td>
+				<tr id="wp_displayname">
+					<td class="label"><?php _e( 'Name', 'buddypress' ); ?></td>
+					<td class="data"><?php echo $ud->display_name; ?></td>
 				</tr>
 
-			<?php endwhile; ?>
+			<?php endif; ?>
+
+			<?php if ( $ud->user_description ) : ?>
+
+				<tr id="wp_desc">
+					<td class="label"><?php _e( 'About Me', 'buddypress' ); ?></td>
+					<td class="data"><?php echo $ud->user_description; ?></td>
+				</tr>
+
+			<?php endif; ?>
+
+			<?php if ( $ud->user_url ) : ?>
+
+				<tr id="wp_website">
+					<td class="label"><?php _e( 'Website', 'buddypress' ); ?></td>
+					<td class="data"><?php echo make_clickable( $ud->user_url ); ?></td>
+				</tr>
+
+			<?php endif; ?>
+
+			<?php if ( $ud->jabber ) : ?>
+
+				<tr id="wp_jabber">
+					<td class="label"><?php _e( 'Jabber', 'buddypress' ); ?></td>
+					<td class="data"><?php echo $ud->jabber; ?></td>
+				</tr>
+
+			<?php endif; ?>
+
+			<?php if ( $ud->aim ) : ?>
+
+				<tr id="wp_aim">
+					<td class="label"><?php _e( 'AOL Messenger', 'buddypress' ); ?></td>
+					<td class="data"><?php echo $ud->aim; ?></td>
+				</tr>
+
+			<?php endif; ?>
+
+			<?php if ( $ud->yim ) : ?>
+
+				<tr id="wp_yim">
+					<td class="label"><?php _e( 'Yahoo Messenger', 'buddypress' ); ?></td>
+					<td class="data"><?php echo $ud->yim; ?></td>
+				</tr>
+
+			<?php endif; ?>
 
 		</table>
-
-	<?php else : ?>
-
-		<?php bp_nouveau_user_feedback( 'member-wp-profile-none' ); ?>
-
-	<?php endif; ?>
-
-</div>
+	</div>
 
 <?php
-bp_nouveau_wp_profile_hooks( 'after' );
 
+/**
+ * Fires after the display of member profile field content.
+ *
+ * @since 1.1.0
+ */
+do_action( 'bp_after_profile_field_content' ); ?>
+
+<?php
+
+/**
+ * Fires and displays the profile field buttons.
+ *
+ * @since 1.1.0
+ */
+do_action( 'bp_profile_field_buttons' ); ?>
+
+<?php
+
+/**
+ * Fires after the display of member profile loop content.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_after_profile_loop_content' );

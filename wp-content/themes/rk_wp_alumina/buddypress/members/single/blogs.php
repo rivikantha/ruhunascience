@@ -2,41 +2,71 @@
 /**
  * BuddyPress - Users Blogs
  *
- * @since 3.0.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
  * @version 3.0.0
  */
+
 ?>
 
-<nav class="<?php bp_nouveau_single_item_subnav_classes(); ?>" id="subnav" role="navigation" aria-label="<?php esc_attr_e( 'Sites menu', 'buddypress' ); ?>">
-	<ul class="subnav">
+<div class="item-list-tabs" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
+	<ul>
 
-		<?php bp_get_template_part( 'members/single/parts/item-subnav' ); ?>
+		<?php bp_get_options_nav(); ?>
 
+		<li id="blogs-order-select" class="last filter">
+
+			<label for="blogs-order-by"><?php _e( 'Order By:', 'buddypress' ); ?></label>
+			<select id="blogs-order-by">
+				<option value="active"><?php _e( 'Last Active', 'buddypress' ); ?></option>
+				<option value="newest"><?php _e( 'Newest', 'buddypress' ); ?></option>
+				<option value="alphabetical"><?php _e( 'Alphabetical', 'buddypress' ); ?></option>
+
+				<?php
+
+				/**
+				 * Fires inside the members blogs order options select input.
+				 *
+				 * @since 1.2.0
+				 */
+				do_action( 'bp_member_blog_order_options' ); ?>
+
+			</select>
+		</li>
 	</ul>
-</nav><!-- .bp-navs -->
-
-<?php bp_get_template_part( 'common/search-and-filters-bar' ); ?>
+</div><!-- .item-list-tabs -->
 
 <?php
 switch ( bp_current_action() ) :
 
 	// Home/My Blogs
-	case 'my-sites':
-		bp_nouveau_member_hook( 'before', 'blogs_content' );
-		?>
+	case 'my-sites' :
 
-		<div class="blogs myblogs" data-bp-list="blogs">
+		/**
+		 * Fires before the display of member blogs content.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_before_member_blogs_content' ); ?>
 
-			<div id="bp-ajax-loader"><?php bp_nouveau_user_feedback( 'member-blogs-loading' ); ?></div>
+		<div class="blogs myblogs">
+
+			<?php bp_get_template_part( 'blogs/blogs-loop' ) ?>
 
 		</div><!-- .blogs.myblogs -->
 
 		<?php
-		bp_nouveau_member_hook( 'after', 'blogs_content' );
+
+		/**
+		 * Fires after the display of member blogs content.
+		 *
+		 * @since 1.2.0
+		 */
+		do_action( 'bp_after_member_blogs_content' );
 		break;
 
 	// Any other
-	default:
+	default :
 		bp_get_template_part( 'members/single/plugins' );
 		break;
 endswitch;

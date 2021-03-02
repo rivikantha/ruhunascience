@@ -2,39 +2,77 @@
 /**
  * BuddyPress - Users Activity
  *
- * @since 3.0.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
  * @version 3.0.0
  */
 
 ?>
 
-<nav class="<?php bp_nouveau_single_item_subnav_classes(); ?>" id="subnav" role="navigation" aria-label="<?php esc_attr_e( 'Activity menu', 'buddypress' ); ?>">
-	<ul class="subnav">
+<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
+	<ul>
 
-		<?php bp_get_template_part( 'members/single/parts/item-subnav' ); ?>
+		<?php bp_get_options_nav(); ?>
 
+		<li id="activity-filter-select" class="last">
+			<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>
+			<select id="activity-filter-by">
+				<option value="-1"><?php _e( '&mdash; Everything &mdash;', 'buddypress' ); ?></option>
+
+				<?php bp_activity_show_filters(); ?>
+
+				<?php
+
+				/**
+				 * Fires inside the select input for member activity filter options.
+				 *
+				 * @since 1.2.0
+				 */
+				do_action( 'bp_member_activity_filter_options' ); ?>
+
+			</select>
+		</li>
 	</ul>
-</nav><!-- .item-list-tabs#subnav -->
+</div><!-- .item-list-tabs -->
 
-<h2 class="bp-screen-title<?php echo ( bp_displayed_user_has_front_template() ) ? ' bp-screen-reader-text' : ''; ?>">
-	<?php esc_html_e( 'Member Activities', 'buddypress' ); ?>
-</h2>
+<?php
 
-<?php bp_nouveau_activity_member_post_form(); ?>
+/**
+ * Fires before the display of the member activity post form.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_before_member_activity_post_form' ); ?>
 
-<?php bp_get_template_part( 'common/search-and-filters-bar' ); ?>
+<?php
+if ( is_user_logged_in() && bp_is_my_profile() && ( !bp_current_action() || bp_is_current_action( 'just-me' ) ) )
+	bp_get_template_part( 'activity/post-form' );
 
-<?php bp_nouveau_member_hook( 'before', 'activity_content' ); ?>
+/**
+ * Fires after the display of the member activity post form.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_after_member_activity_post_form' );
 
-<div id="activity-stream" class="activity single-user" data-bp-list="activity">
+/**
+ * Fires before the display of the member activities list.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_before_member_activity_content' ); ?>
 
-	<div id="bp-ajax-loader"><?php bp_nouveau_user_feedback( 'member-activity-loading' ); ?></div>
+<div class="activity" aria-live="polite" aria-atomic="true" aria-relevant="all">
 
-	<ul  class="<?php bp_nouveau_loop_classes(); ?>" >
-
-	</ul>
+	<?php bp_get_template_part( 'activity/activity-loop' ) ?>
 
 </div><!-- .activity -->
 
 <?php
-bp_nouveau_member_hook( 'after', 'activity_content' );
+
+/**
+ * Fires after the display of the member activities list.
+ *
+ * @since 1.2.0
+ */
+do_action( 'bp_after_member_activity_content' );

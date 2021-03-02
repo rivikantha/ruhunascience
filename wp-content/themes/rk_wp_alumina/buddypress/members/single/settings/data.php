@@ -1,16 +1,16 @@
 <?php
 /**
- * BuddyPress - Members Settings (Export Data)
+ * BuddyPress - Members Settings Data
  *
- * @since 3.1.0
- * @version 3.1.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
+ * @version 4.0.0
  */
 
-bp_nouveau_member_hook( 'before', 'settings_template' ); ?>
+/** This action is documented in bp-templates/bp-legacy/buddypress/members/single/settings/profile.php */
+do_action( 'bp_before_member_settings_template' ); ?>
 
-<h2 class="screen-heading data-settings-screen">
-	<?php esc_html_e( 'Data Export', 'buddypress' ); ?>
-</h2>
+<h2><?php _e( 'Data Export', 'buddypress' );?></h2>
 
 <?php $request = bp_settings_get_personal_data_request(); ?>
 
@@ -21,7 +21,12 @@ bp_nouveau_member_hook( 'before', 'settings_template' ); ?>
 		<?php if ( bp_settings_personal_data_export_exists( $request ) ) : ?>
 
 			<p><?php esc_html_e( 'Your request for an export of personal data has been completed.', 'buddypress' ); ?></p>
-			<p><?php printf( esc_html__( 'You may download your personal data by clicking on the link below. For privacy and security, we will automatically delete the file on %s, so please download it before then.', 'buddypress' ), bp_settings_get_personal_data_expiration_date( $request ) ); ?></p>
+			<p>
+				<?php
+				/* translators: %s: expiration date */
+				printf( esc_html__( 'You may download your personal data by clicking on the link below. For privacy and security, we will automatically delete the file on %s, so please download it before then.', 'buddypress' ), bp_settings_get_personal_data_expiration_date( $request ) );
+				?>
+			</p>
 
 			<p><strong><?php printf( '<a href="%1$s">%2$s</a>', bp_settings_get_personal_data_export_url( $request ), esc_html__( 'Download personal data', 'buddypress' ) ); ?></strong></p>
 
@@ -39,7 +44,12 @@ bp_nouveau_member_hook( 'before', 'settings_template' ); ?>
 
 	<?php elseif ( 'request-confirmed' === $request->status ) : ?>
 
-		<p><?php printf( esc_html__( 'You previously requested an export of your personal data on %s.', 'buddypress' ), bp_settings_get_personal_data_confirmation_date( $request ) ); ?></p>
+		<p>
+			<?php
+			/* translators: %s: confirmation date */
+			printf( esc_html__( 'You previously requested an export of your personal data on %s.', 'buddypress' ), bp_settings_get_personal_data_confirmation_date( $request ) );
+			?>
+		</p>
 		<p><?php esc_html_e( 'You will receive a link to download your export via email once we are able to fulfill your request.', 'buddypress' ); ?></p>
 
 	<?php endif; ?>
@@ -58,12 +68,22 @@ bp_nouveau_member_hook( 'before', 'settings_template' ); ?>
 
 <?php endif; ?>
 
-<h2 class="screen-heading data-settings-screen">
-	<?php esc_html_e( 'Data Erase', 'buddypress' ); ?>
-</h2>
+<!--
+<h2 class="bp-screen-reader-text"><?php
+	/* translators: accessibility text */
+	_e( 'Data Erase', 'buddypress' );
+?></h2>
 
-<?php /* translators: Link to Delete Account Settings page */ ?>
-<p><?php esc_html_e( 'To erase all data associated with your account, your user account must be completely deleted.', 'buddypress' ); ?> <?php if ( bp_disable_account_deletion() ) : ?><?php esc_html_e( 'Please contact the site administrator to request account deletion.', 'buddypress' ); ?><?php else : ?><?php printf( esc_html__( 'You may delete your account by visiting the %s page.', 'buddypress' ), sprintf( '<a href="%s">%s</a>', bp_displayed_user_domain() . bp_get_settings_slug() . '/delete-account/', esc_html__( 'Delete Account', 'buddypress' ) ) ); ?><?php endif; ?></p>
+<p>You can make a request to erase the following type of data from the site:</p>
+
+<p>If you want to make a request, please click on the button below:</p>
+
+	<form id="bp-data-erase" method="post">
+		<button type="submit" name="bp-data-erase-nonce" value="<?php echo wp_create_nonce( 'bp-data-erase' ); ?>">Request data erasure</button>
+	</form>
+-->
 
 <?php
-bp_nouveau_member_hook( 'after', 'settings_template' );
+
+/** This action is documented in bp-templates/bp-legacy/buddypress/members/single/settings/profile.php */
+do_action( 'bp_after_member_settings_template' );

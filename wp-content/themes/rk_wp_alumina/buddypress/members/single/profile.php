@@ -2,61 +2,72 @@
 /**
  * BuddyPress - Users Profile
  *
- * @since 3.0.0
+ * @package BuddyPress
+ * @subpackage bp-legacy
  * @version 3.0.0
  */
+
 ?>
 
-<nav class="<?php bp_nouveau_single_item_subnav_classes(); ?>" id="subnav" role="navigation" aria-label="<?php esc_attr_e( 'Profile menu', 'buddypress' ); ?>">
-	<ul class="subnav">
-
-		<?php bp_get_template_part( 'members/single/parts/item-subnav' ); ?>
-
+<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
+	<ul>
+		<?php bp_get_options_nav(); ?>
 	</ul>
-</nav><!-- .item-list-tabs -->
-
-<?php bp_nouveau_member_hook( 'before', 'profile_content' ); ?>
-
-<div class="profile <?php echo bp_current_action(); ?>">
+</div><!-- .item-list-tabs -->
 
 <?php
-switch ( bp_current_action() ) :
+
+/**
+ * Fires before the display of member profile content.
+ *
+ * @since 1.1.0
+ */
+do_action( 'bp_before_profile_content' ); ?>
+
+<div class="profile">
+
+<?php switch ( bp_current_action() ) :
 
 	// Edit
-	case 'edit':
+	case 'edit'   :
 		bp_get_template_part( 'members/single/profile/edit' );
 		break;
 
 	// Change Avatar
-	case 'change-avatar':
+	case 'change-avatar' :
 		bp_get_template_part( 'members/single/profile/change-avatar' );
 		break;
 
 	// Change Cover Image
-	case 'change-cover-image':
+	case 'change-cover-image' :
 		bp_get_template_part( 'members/single/profile/change-cover-image' );
 		break;
 
 	// Compose
-	case 'public':
+	case 'public' :
+
 		// Display XProfile
-		if ( bp_is_active( 'xprofile' ) ) {
+		if ( bp_is_active( 'xprofile' ) )
 			bp_get_template_part( 'members/single/profile/profile-loop' );
 
 		// Display WordPress profile (fallback)
-		} else {
+		else
 			bp_get_template_part( 'members/single/profile/profile-wp' );
-		}
 
 		break;
 
 	// Any other
-	default:
+	default :
 		bp_get_template_part( 'members/single/plugins' );
 		break;
-endswitch;
-?>
+endswitch; ?>
 </div><!-- .profile -->
 
 <?php
-bp_nouveau_member_hook( 'after', 'profile_content' );
+
+/**
+ * Fires after the display of member profile content.
+ *
+ * @since 1.1.0
+ */
+do_action( 'bp_after_profile_content' );

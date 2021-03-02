@@ -281,6 +281,9 @@ div.rpwwt-widget h1{
 /* End of gallary css */
 
 
+
+/* Buddypress */
+
 /* Buddypress members directory css */
 
 
@@ -291,6 +294,74 @@ div.rpwwt-widget h1{
     font-weight: 500;
     font-size: 30px;
     color: #5F090F;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e9e9e9;
+    padding-bottom:10px;
+}
+
+
+.item-list-tabs li{
+
+    list-style: none;
+}
+
+.item-list-tabs a{
+
+    font-family: "Montserrat";    
+    font-weight: 400;
+    font-size: 15px;
+    color: #5F090F;
+}
+
+.item-list-tabs span{
+
+    font-family: "Montserrat";   
+    color: white;
+    background-color: blue;
+    margin-left:10px;
+    padding:5px;
+
+}
+
+#members-list.grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin-bottom: 0;
+    width: auto;
+    margin: 0 -10px;
+}
+
+ #buddypress #members-list li{
+
+    overflow: initial;
+ }
+
+body:not(.has-sidebar) .buddypress-wrap .grid.bp-list > li {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+#members-list.item-list .list-wrap{
+    border: 1px solid #e7e9ec;
+}
+
+#members-list.grid > li {
+    margin: 0 0 20px;
+        margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+#members-list.item-list.grid .list-wrap{
+
+    padding: 15px 20px 52px 20px;
+    border-radius: 4px;
+    border-color: #E7E9EC;
+    background: #FFFFFF;
 }
 
 

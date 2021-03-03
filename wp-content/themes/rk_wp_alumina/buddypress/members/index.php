@@ -127,20 +127,16 @@ do_action( 'bp_before_directory_members_page' ); ?>
 		<h2 class="bp-screen-reader-text"><?php
 			/* translators: accessibility text */
 			_e( 'Members directory', 'buddypress' );
-		?></h2>
+		?></h2>	
 
-	<div class="row">
+	<div id="members-dir-list" class="members dir-list">			
 
-		<div id="members-dir-list" class="members dir-list">
+		<?php bp_get_template_part( 'members/members-loop' ); ?>
+		
 
-		<div class="col">	
+	</div><!-- #members-dir-list -->
 
-			<?php bp_get_template_part( 'members/members-loop' ); ?>
-
-		</div>
-		</div><!-- #members-dir-list -->
-
-	</div>
+	
 
 		<?php
 

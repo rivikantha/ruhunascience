@@ -14,7 +14,6 @@
  *
  * @since 1.2.0
  */
-
 do_action( 'bp_before_members_loop' ); ?>
 
 <?php if ( bp_get_current_member_type() ) : ?>
@@ -23,7 +22,7 @@ do_action( 'bp_before_members_loop' ); ?>
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
 
-	<!-- <div id="pag-top" class="pagination">
+	<div id="pag-top" class="pagination">
 
 		<div class="pag-count" id="member-dir-count-top">
 
@@ -37,7 +36,7 @@ do_action( 'bp_before_members_loop' ); ?>
 
 		</div>
 
-	</div> -->
+	</div>
 
 	<?php
 
@@ -48,93 +47,68 @@ do_action( 'bp_before_members_loop' ); ?>
 	 */
 	do_action( 'bp_before_directory_members_list' ); ?>
 
-	<!-- <ul id="members-list" class="item-list members-list bp-list grid" aria-live="assertive" aria-relevant="all"> -->
-
-	<div class='row'>
-
-	<div class="col">
+	<ul id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
 
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 
-		<!-- <li <?php bp_member_class(); ?>> -->
+		<li <?php bp_member_class(); ?>>
+			<div class="item-avatar">
+				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
+			</div>
 
-			
+			<div class="item">
+				<div class="item-title">
+					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
 
-				<div class="card" style="width: 18rem;">
-				  <div class="card-body">
-				    <h5 class="card-title">Card title</h5>
-				    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				    <a href="#" class="card-link">Card link</a>
-				    <a href="#" class="card-link">Another link</a>
-				  </div>
+					<?php if ( bp_get_member_latest_update() ) : ?>
+
+						<span class="update"> <?php bp_member_latest_update(); ?></span>
+
+					<?php endif; ?>
+
 				</div>
 
-				<div class="list-wrap-inner">
-					<div class="item-avatar">
-						<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
-					</div>
+				<div class="item-meta"><span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span></div>
 
-					<div class="item">
-						<div class="item-title">
-							<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
+				<?php
 
-							<?php if ( bp_get_member_latest_update() ) : ?>
+				/**
+				 * Fires inside the display of a directory member item.
+				 *
+				 * @since 1.1.0
+				 */
+				do_action( 'bp_directory_members_item' ); ?>
 
-								<!-- <span class="update"> <?php bp_member_latest_update(); ?></span> -->
+				<?php
+				 /***
+				  * If you want to show specific profile fields here you can,
+				  * but it'll add an extra query for each member in the loop
+				  * (only one regardless of the number of fields you show):
+				  *
+				  * bp_member_profile_data( 'field=the field name' );
+				  */
+				?>
+			</div>
 
-							<?php endif; ?>
+			<div class="action">
 
-						</div>
+				<?php
 
-						<div class="item-meta"><span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span></div>
+				/**
+				 * Fires inside the members action HTML markup to display actions.
+				 *
+				 * @since 1.1.0
+				 */
+				do_action( 'bp_directory_members_actions' ); ?>
 
-						<?php
+			</div>
 
-						/**
-						 * Fires inside the display of a directory member item.
-						 *
-						 * @since 1.1.0
-						 */
-						do_action( 'bp_directory_members_item' ); ?>
-
-						<?php
-						 /***
-						  * If you want to show specific profile fields here you can,
-						  * but it'll add an extra query for each member in the loop
-						  * (only one regardless of the number of fields you show):
-						  *
-						  * bp_member_profile_data( 'field=the field name' );
-						  */
-						?>
-					</div>
-
-					<div class="action">
-
-						<?php
-
-						/**
-						 * Fires inside the members action HTML markup to display actions.
-						 *
-						 * @since 1.1.0
-						 */
-						do_action( 'bp_directory_members_actions' ); ?>
-
-					</div>
-
-					<!-- <div class="clear"></div> -->
-					
-				</div><!--end of list-wrap-inner -->
-
-			
-		<!-- </li> -->
+			<div class="clear"></div>
+		</li>
 
 	<?php endwhile; ?>
 
-	</div><!--end of col-sm-12-->
-	</div><!--end of row -->
-
-	<!-- </ul> -->
+	</ul>
 
 	<?php
 

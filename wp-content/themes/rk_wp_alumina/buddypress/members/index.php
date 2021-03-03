@@ -129,9 +129,18 @@ do_action( 'bp_before_directory_members_page' ); ?>
 			_e( 'Members directory', 'buddypress' );
 		?></h2>
 
-		<div id="members-dir-list" class="members dir-list">
+	<div class="row">
+
+		<!-- <div id="members-dir-list" class="members dir-list"> -->
+
+		<div class="col">	
+
 			<?php bp_get_template_part( 'members/members-loop' ); ?>
-		</div><!-- #members-dir-list -->
+
+		</div>
+		<!-- </div> --><!-- #members-dir-list -->
+
+	</div>
 
 		<?php
 

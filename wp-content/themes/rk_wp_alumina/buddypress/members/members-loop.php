@@ -23,7 +23,7 @@ do_action( 'bp_before_members_loop' ); ?>
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination">
+	<!-- <div id="pag-top" class="pagination">
 
 		<div class="pag-count" id="member-dir-count-top">
 
@@ -37,7 +37,7 @@ do_action( 'bp_before_members_loop' ); ?>
 
 		</div>
 
-	</div>
+	</div> -->
 
 	<?php
 
@@ -48,13 +48,27 @@ do_action( 'bp_before_members_loop' ); ?>
 	 */
 	do_action( 'bp_before_directory_members_list' ); ?>
 
-	<ul id="members-list" class="item-list members-list bp-list grid" aria-live="assertive" aria-relevant="all">
+	<!-- <ul id="members-list" class="item-list members-list bp-list grid" aria-live="assertive" aria-relevant="all"> -->
+
+	<div class='row'>
+
+	<div class="col">
 
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 
-		<li <?php bp_member_class(); ?>>
+		<!-- <li <?php bp_member_class(); ?>> -->
 
-			<div class="list-wrap">
+			
+
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h5 class="card-title">Card title</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				    <a href="#" class="card-link">Card link</a>
+				    <a href="#" class="card-link">Another link</a>
+				  </div>
+				</div>
 
 				<div class="list-wrap-inner">
 					<div class="item-avatar">
@@ -67,7 +81,7 @@ do_action( 'bp_before_members_loop' ); ?>
 
 							<?php if ( bp_get_member_latest_update() ) : ?>
 
-								<span class="update"> <?php bp_member_latest_update(); ?></span>
+								<!-- <span class="update"> <?php bp_member_latest_update(); ?></span> -->
 
 							<?php endif; ?>
 
@@ -108,16 +122,19 @@ do_action( 'bp_before_members_loop' ); ?>
 
 					</div>
 
-					<div class="clear"></div>
+					<!-- <div class="clear"></div> -->
 					
 				</div><!--end of list-wrap-inner -->
 
-			</div><!--end of list-wrap-->
-		</li>
+			
+		<!-- </li> -->
 
 	<?php endwhile; ?>
 
-	</ul>
+	</div><!--end of col-sm-12-->
+	</div><!--end of row -->
+
+	<!-- </ul> -->
 
 	<?php
 

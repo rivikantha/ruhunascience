@@ -352,6 +352,14 @@ li#members-all a{
 }
 
 
+.profile-img{
+
+    box-shadow: 0 2px 5px 0 rgba(18,43,70,.12),0 0 0 1px #e7e9ec;
+    border: 5px solid #fff;
+    max-width: 180px;
+}
+
+
 
 
 

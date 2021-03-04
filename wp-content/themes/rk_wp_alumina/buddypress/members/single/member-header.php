@@ -18,10 +18,11 @@
  */
 do_action( 'bp_before_member_header' ); ?>
 
+
 <div id="item-header-avatar">
 	<a href="<?php bp_displayed_user_link(); ?>">
 
-		<?php bp_displayed_user_avatar( 'type=full' ); ?>
+		<?php bp_displayed_user_avatar( 'type=full&class="profile-img"' ); ?>
 
 	</a>
 </div><!-- #item-header-avatar -->

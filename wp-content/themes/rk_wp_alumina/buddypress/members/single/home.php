@@ -20,6 +20,8 @@
 	 */
 	do_action( 'bp_before_member_home_content' ); ?>
 
+	
+
 	<div id="item-header" role="complementary">
 
 		<?php

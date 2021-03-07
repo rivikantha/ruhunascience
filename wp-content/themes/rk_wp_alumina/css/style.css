@@ -352,6 +352,8 @@ li#members-all a{
 }
 
 
+/* Buddy Press Members Profile */
+
 .profile-img{
 
     box-shadow: 0 2px 5px 0 rgba(18,43,70,.12),0 0 0 1px #e7e9ec;
@@ -359,9 +361,119 @@ li#members-all a{
     max-width: 180px;
 }
 
+.item-header-container{
+
+    background-color: #f1f1f1;
+    margin-top: -31px;
+    border: 1px solid #e7e9ec;
+    flex-flow: row wrap;
+    padding: 30px 30px 0;
+    font-size: 14px;
+    line-height: 1.3575;
+}
+
+
+.cover-image{
+
+    min-height: auto;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    position: relative;
+    z-index: 2;
+    box-sizing: inherit;
+}
+
+
+#item-header-avatar{
+
+    margin-right: 30px;
+    margin-bottom: 5px;
+}
+
+#item-header-content{
+
+    margin-left: 0;
+    margin-top: 0;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.user-full-name{
+
+    color:#5F0A0A;
+}
+
+
+#item-nav #object-nav{
+
+    background: #fff;
+    border: 1px solid #e7e9ec;
+    border-top-color: rgb(231, 233, 236);
+    border-right-color: rgb(231, 233, 236);
+    border-bottom-color: rgb(231, 233, 236);
+    border-left-color: rgb(231, 233, 236);
+    padding: 0 20px;
+    margin: 0 0 20px;
+    margin-top: 0px;
+    margin-top: -1px;
+    border-radius: 0 0 4px 4px;
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    clear: both;
+    font-size: 16px;
+    
+
+}
+
+#item-nav #object-nav a{
+
+    display: block;
+    padding: 11px 0;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 2;
+
+}
 
 
 
+#item-nav #object-nav>ul{
 
+    margin: 0;
+    padding: 0;
+
+}
+
+#item-nav #object-nav li{
+
+    list-style: none;
+    float:left;
+    margin: 0;
+    padding: 0 30px 0 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 100px;
+
+}
+
+#item-nav #object-nav li.selected a{
+
+    border-bottom-color: #007CFF;
+    color: #122B46;
+
+}
+
+body #buddypress * a {
+    box-shadow: none;
+    text-decoration: none;
+}
 
 /* End of buddypress members directory css */

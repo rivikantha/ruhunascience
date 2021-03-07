@@ -2014,3 +2014,30 @@ function bp_legacy_theme_group_manage_members_add_search() {
 		<?php
 	endif;
 }
+
+
+/**
+ * Reorder BuddyPress profile tabs/navigation.
+ */
+function buddydev_reorder_buddypress_profile_tabs() {
+    $nav = buddypress()->members->nav;
+ 
+    // it's a map of nav items for user profile.
+    // mapping component slug to their position.
+    $nav_items = array(
+        
+        'profile'  => 10,         
+        'activity' => 20,
+        'friends'  => 30,
+        'groups'   => 40,
+        'blogs'    => 50,
+        'messages' => 60,
+        'settings' => 70,
+        
+    );
+ 
+    foreach ( $nav_items as $nav_item => $position ) {
+        $nav->edit_nav( array( 'position' => $position ), $nav_item );
+    }
+}
+add_action( 'bp_setup_nav', 'buddydev_reorder_buddypress_profile_tabs', 999 );

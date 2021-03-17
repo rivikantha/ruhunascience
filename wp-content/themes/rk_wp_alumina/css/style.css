@@ -408,6 +408,12 @@ li#members-all a{
     color:#5F0A0A;
 }
 
+#object-nav{
+
+    border-radius: 2px;
+    border: 1px solid #e7e9ec;
+}
+
 #object-nav ul{
 
     padding:0px;
@@ -436,10 +442,11 @@ ul.menu#menu-bp li{
     padding: 10px;
 }
 
-ul.menu#menu-bp li:hover{
+ul.menu#menu-bp a:hover{
 
-    background-color: blue;
+   color: blue;
 }
+
 
 ul.menu#menu-bp > li{
 
@@ -456,8 +463,11 @@ ul.menu#menu-bp > li a{
 
     text-decoration: none;
     color:grey;
+}
 
+li.current-menu-parent a{
 
+    color:black !important;
 }
 
 ul.menu#menu-bp > li:hover > ul.sub-menu {
@@ -484,11 +494,14 @@ ul.sub-menu ul.sub-menu{
 ul.sub-menu li{
 
     position:relative;
+    border-top: 1px solid #e7e9ec;
 }
 
 ul.sub-menu{
 
     display:none;
+    border-radius: 2px;
+    border: 1px solid #e7e9ec;
     list-style-type: none;
     background-color: #f1f1f1;
     position:absolute;

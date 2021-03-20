@@ -465,21 +465,25 @@ ul.menu#menu-bp > li a{
     color:grey;
 }
 
-li.current-menu-parent a{
+li.current-menu-parent>a{
 
     color:black !important;
 }
 
 ul.menu#menu-bp > li:hover > ul.sub-menu {
 
+    position: absolute;
     display:block;
+    z-index: 999;
 
 
 }
 
 ul.sub-menu > li:hover > ul.sub-menu {
 
+    position: absolute;
     display:block;
+    z-index: 999;
 
 
 }
@@ -494,14 +498,15 @@ ul.sub-menu ul.sub-menu{
 ul.sub-menu li{
 
     position:relative;
-    border-top: 1px solid #e7e9ec;
+    border-top: 1px solid #C4C4C4;
 }
 
 ul.sub-menu{
 
     display:none;
     border-radius: 2px;
-    border: 1px solid #e7e9ec;
+    border: 1px solid #C4C4C4;
+    border-top: none;
     list-style-type: none;
     background-color: #f1f1f1;
     position:absolute;
@@ -528,8 +533,115 @@ ul.sub-menu li{
     padding:10px;
 }
 
+.profile{
+
+    margin-top: 30px;
+    padding:25px;
+    background-color: #f1f1f1;
+}
 
 
+.bp-widget.base h2{
+
+    border-bottom: 1px solid #C4C4C4;
+    margin-bottom:25px;
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+table.profile-fields td{
+
+    padding:0px 50px 0px 25px;
+}
+
+
+table.profile-fields td.label{
+
+    color:grey;
+}
+
+
+.item-list-tabs li{
+
+    list-style: none;
+}
+
+/*#item-body{
+
+    margin-top: 30px;
+    padding:25px;
+    background-color: #f1f1f1; 
+}*/
+
+#item-body #subnav.item-list-tabs.no-ajax{
+    
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    margin-top: 30px;
+    padding:5px;
+    background-color: #f1f1f1;
+    border: 1px solid #e7e9ec;
+}
+
+
+#item-body #subnav.item-list-tabs.no-ajax ul{
+    
+    width: 100%;
+    box-sizing: border-box;
+    margin:0px;
+    padding:20px 10px;    
+    display: flex;
+    align-content: center;
+    height: 100%;
+
+}
+
+#item-body #subnav.item-list-tabs.no-ajax li{
+
+    padding:10px;
+    padding-right:20px;
+    border-right: 1px solid grey;
+    border-radius: 0px;
+    margin-right:20px;
+}
+
+#item-body #subnav.item-list-tabs.no-ajax li a{
+
+    text-decoration: none;
+    color:black;
+}
+
+.activity{
+
+    box-sizing: border-box;    
+    margin-top: 30px;
+    padding:5px;
+    background-color: #f1f1f1;
+    border: 1px solid #e7e9ec;
+}
+
+
+#whats-new-form{
+
+    box-sizing: border-box;    
+    margin-top: 30px;
+    padding:25px;
+    background-color: #f1f1f1;
+    border: 1px solid #e7e9ec;
+
+}
+
+textarea#whats-new{
+
+    border:none;
+}
+
+#aw-whats-new-submit{
+
+    margin:20px 0px 20px 0px;
+}
 
 
 /* End of buddypress members directory css */

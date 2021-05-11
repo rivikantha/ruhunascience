@@ -12,7 +12,7 @@
 <div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
 	<ul>
 
-		<?php //bp_get_options_nav(); ?>
+		<?php bp_get_options_nav(); ?>
 
 		<li id="activity-filter-select" class="last">
 			<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>

@@ -1,189 +1,205 @@
 <?php
+/**
+ * rk_wp_alumina functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package rk_wp_alumina
+ */
+
+if ( ! defined( '_S_VERSION' ) ) {
+	// Replace the version number of the theme on each release.
+	define( '_S_VERSION', '1.0.0' );
+}
+
 
 require_once('class-wp-bootstrap-navwalker.php');
 
+
+if ( ! function_exists( 'rk_wp_alumina_setup' ) ) :
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
+	 */
+	function rk_wp_alumina_setup() {
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on rk_wp_alumina, use a find and replace
+		 * to change 'rk_wp_alumina' to the name of your theme in all the template files.
+		 */
+		load_theme_textdomain( 'rk_wp_alumina', get_template_directory() . '/languages' );
+
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
+
+		/*
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
+
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		 */
+		add_theme_support( 'post-thumbnails' );
+
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus(
+			array(
+				'menu-1' => esc_html__( 'Primary', 'rk_wp_alumina' ),
+				'menu-2' => esc_html__( 'Top Nav', 'rk_wp_alumina' ),
+			)
+		);
+
+		/*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+				'style',
+				'script',
+			)
+		);
+
+		// Set up the WordPress core custom background feature.
+		add_theme_support(
+			'custom-background',
+			apply_filters(
+				'rk_wp_alumina_custom_background_args',
+				array(
+					'default-color' => 'ffffff',
+					'default-image' => '',
+				)
+			)
+		);
+
+		// Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
+
+		/**
+		 * Add support for core custom logo.
+		 *
+		 * @link https://codex.wordpress.org/Theme_Logo
+		 */
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 100,
+				'width'       => 240,
+				'flex-width'  => false,
+				'flex-height' => false,
+			)
+		);
+	}
+endif;
+add_action( 'after_setup_theme', 'rk_wp_alumina_setup' );
+
 /**
- * Include CSS files
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
  */
-function theme_enqueue_scripts() {
+function rk_wp_alumina_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'rk_wp_alumina_content_width', 640 );
+}
+add_action( 'after_setup_theme', 'rk_wp_alumina_content_width', 0 );
+
+/**
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ */
+function rk_wp_alumina_widgets_init() {
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Front Page Widget Area', 'rk_wp_alumina' ),
+			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add widgets here.', 'rk_wp_alumina' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+}
+add_action( 'widgets_init', 'rk_wp_alumina_widgets_init' );
+
+/**
+ * Enqueue scripts and styles.
+ */
+function rk_wp_alumina_scripts() {
+
 
 	//Css files
 	wp_enqueue_style( 'Font_Awesome', get_template_directory_uri().'/fonts/fontawesome-free-5.15.2-web/css/all.css' );
-	wp_enqueue_style( 'Bootstrap_css', get_template_directory_uri() . '/css/bootstrap.min.css' ); 
-	//wp_enqueue_style( 'Custom', get_template_directory_uri() . '/css/style.css','','1.0.6');
+	wp_enqueue_style( 'Bootstrap_css', get_template_directory_uri() . '/css/bootstrap.min.css' );
 
 
-	//Js files
+	//wp_enqueue_style( 'rk_wp_alumina-style', get_stylesheet_uri(), array(), _S_VERSION );
+
+	$css_version = rand();
+
+	wp_enqueue_style( 'rk_wp_alumina-style', get_stylesheet_uri(), array(), $css_version );
+	wp_style_add_data( 'rk_wp_alumina-style', 'rtl', 'replace' );
+
 
 	wp_enqueue_script( 'jQuery', get_template_directory_uri() . '/js/jquery-3.5.1.min.js', array(), '3.5.1', true );
 	wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/jquery.waypoints.min.js', array(), '4.0.1', true );
 	wp_enqueue_script( 'countup', get_template_directory_uri() . '/js/jquery.counterup.js', array(), '1.0.3', true );	
 	wp_enqueue_script( 'Tether', 'https://unpkg.com/@popperjs/core@2"', array(), '1.0.0', true );
 	wp_enqueue_script( 'Bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '1.0.0', true );
-	      
 
+	wp_enqueue_script( 'rk_wp_alumina-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'rk_wp_alumina-custom-js', get_template_directory_uri() . '/js/script.js', array(), $css_version, true );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
-
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
-
+add_action( 'wp_enqueue_scripts', 'rk_wp_alumina_scripts' );
 
 /**
- * Setup Theme
+ * Implement the Custom Header feature.
  */
+require get_template_directory() . '/inc/custom-header.php';
 
-function rk_wp_alumina_setup(){
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
 
-	//Add featured image setup
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_template_directory() . '/inc/template-functions.php';
 
-	add_theme_support('post-thumbnails');
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
 
-	//Add custom Logo to the theme
-
-	$defaults = array(
-		'height'      => 130,
-		'width'       => 100,
-		'flex-height' => true,
-		'flex-width'  => true,
-		'header-text' => array( 'site-title', 'Theme theme is RK WP Alumina' ),
-		'unlink-homepage-logo' => true, 
-	);
- 	add_theme_support( 'custom-logo', $defaults );
-
-
+/**
+ * Load Jetpack compatibility file.
+ */
+if ( defined( 'JETPACK__VERSION' ) ) {
+	require get_template_directory() . '/inc/jetpack.php';
 }
-
-add_action('after_setup_theme','rk_wp_alumina_setup');
-
-
-function register_rk_wp_alumina_menus() {
-  register_nav_menus(
-    array(
-      'header-menu' => __( 'Header Menu' ),
-      'extra-menu' => __( 'Extra Menu' ),
-     )
-   );
- }
- add_action( 'init', 'register_rk_wp_alumina_menus' );
-
-
-
-
-function my_widgets_init() {
-	register_sidebar(
-
-		array (
-		'name' => __('RK WP Alumina Index Page Sidebar Widget Area'),
-		'id' => 'rk_wp_alumina_index_sidebar',
-		'description' => __('Widdget area in the sidebar of body of page'),
-		'before_widget' => '',
-		'after_widget' => "",
-		'before_title' => '',
-		'after_title' => '',
-		)
-
-	);
-
-
-	register_sidebar(
-
-		array (
-		'name' => __('RK WP Alumina Recent News'),
-		'id' => 'rk_wp_alumina_recent_news_sidebar',
-		'description' => __('Widdget area for recent news'),
-		'before_widget' => '',
-		'after_widget' => "",
-		'before_title' => '<h1>',
-		'after_title' => '</h1>',
-		)
-
-	);
-
-	register_sidebar(
-
-		array (
-		'name' => __('RK WP Alumina Photo Gallary'),
-		'id' => 'rk_wp_alumina_photo_gallary',
-		'description' => __('Widdget area for photo gallary'),
-		'before_widget' => '',
-		'after_widget' => "",
-		'before_title' => '<h1>',
-		'after_title' => '</h1>',
-		)
-
-	);
-}
-add_action('widgets_init', 'my_widgets_init');
-
-
-
-// Define a constant path to our single template folder 
-
-
-define('SINGLE_PATH', TEMPLATEPATH . '/single');  
-
-// Filter the single_template with our custom function 
-
- 
-
-add_filter('single_template', 'my_single_template');  
-
-// Single template function which will choose our template 
- 
-
-function my_single_template($single) { 
-	
-	global $wp_query, $post;  
-	
-	//Checks for single template by category 
-	//Check by category slug and ID 
-	
-	
-	foreach((array)get_the_category() as $cat){
-	
-		if(file_exists(SINGLE_PATH . '/single-cat-' . $cat->slug . '.php')) 
-			return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
-			
-		elseif(file_exists(SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php')) 
-			return SINGLE_PATH . '/single-cat-' . $cat->term_id . '.php'; 
-
-		}
-		
-}
-
-
-//Short code to add recent news sidebar without plugin 
-
-function rk_postsbycategory($category_name = "news") {
-// the query
-$the_query = new WP_Query( array( 'category_name' => $category_name, 'posts_per_page' => 10 ) ); 
- 
-// The Loop
-if ( $the_query->have_posts() ) {
-    $string .= '<ul class="postsbycategory widget_recent_entries">';
-    while ( $the_query->have_posts() ) {
-        $the_query->the_post();
-            if ( has_post_thumbnail() ) {
-            $string .= '<li>';
-            $string .= '<a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_post_thumbnail($post_id, array( 50, 50) ) . get_the_title() .'</a></li>';
-            } else { 
-            // if no featured image is found
-            $string .= '<li><a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_title() .'</a></li>';
-            }
-            }
-    } else {
-    // no posts found
-}
-$string .= '</ul>';
- 
-return $string;
- 
-/* Restore original Post Data */
-wp_reset_postdata();
-}
-// Add a shortcode
-add_shortcode('categoryposts', 'wpb_postsbycategory');
- 
-// Enable shortcodes in text widgets
-add_filter('widget_text', 'do_shortcode');
-
 

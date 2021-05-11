@@ -2,37 +2,39 @@
 /**
  * The template for displaying all single posts
  *
- * @link https://www.rk-soft.com/wp-themes/
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package RK Themes
- * @subpackage RK WP Alumina
- * @since RK WP Alumina 1.0
+ * @package rk_wp_alumina
  */
 
 get_header();
 ?>
 
-	<div class="row">
+	<main id="primary" class="site-main">
 
-		<div class="col p-5">
+		<?php
+		while ( have_posts() ) :
+			the_post();
 
-			<?php
+			get_template_part( 'template-parts/content', get_post_type() );
 
-			// Start the Loop.
-			while ( have_posts() ) :
+			the_post_navigation(
+				array(
+					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'rk_wp_alumina' ) . '</span> <span class="nav-title">%title</span>',
+					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'rk_wp_alumina' ) . '</span> <span class="nav-title">%title</span>',
+				)
+			);
 
-				the_post();
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
 
-				the_title( '<h1 class="entry-title">', '</h1>' );
+		endwhile; // End of the loop.
+		?>
 
-				the_content();
-				
-
-			endwhile; // End the loop.
-			?>
-
-		<//><!-- col -->
-	</div><!-- row -->
+	</main><!-- #main -->
 
 <?php
+get_sidebar();
 get_footer();

@@ -20,8 +20,6 @@
 	 */
 	do_action( 'bp_before_member_home_content' ); ?>
 
-	
-
 	<div id="item-header" role="complementary">
 
 		<?php
@@ -41,7 +39,7 @@
 		<div class="item-list-tabs no-ajax" id="object-nav" aria-label="<?php esc_attr_e( 'Member primary navigation', 'buddypress' ); ?>" role="navigation">
 			<ul>
 
-				<?php //bp_get_displayed_user_nav(); ?>
+				<?php bp_get_displayed_user_nav(); ?>
 
 				<?php
 
@@ -50,11 +48,7 @@
 				 *
 				 * @since 1.2.4
 				 */
-				//do_action( 'bp_member_options_nav' ); 
-
-				bp_nav_menu();
-
-				?>
+				do_action( 'bp_member_options_nav' ); ?>
 
 			</ul>
 		</div>

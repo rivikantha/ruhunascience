@@ -18,85 +18,74 @@
  */
 do_action( 'bp_before_member_header' ); ?>
 
+<div id="item-header-avatar">
+	<a href="<?php bp_displayed_user_link(); ?>">
 
-<div class="item-header-container">
+		<?php bp_displayed_user_avatar( 'type=full' ); ?>
 
-	<div class="cover-image">
+	</a>
+</div><!-- #item-header-avatar -->
 
+<div id="item-header-content">
 
-		<div id="item-header-avatar">
-			<a href="<?php bp_displayed_user_link(); ?>">
+	<?php if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() ) : ?>
+		<h2 class="user-nicename">@<?php bp_displayed_user_mentionname(); ?></h2>
+	<?php endif; ?>
 
-				<?php bp_displayed_user_avatar( 'type=full&class="profile-img"' ); ?>
+	<span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_user_last_activity( bp_displayed_user_id() ) ); ?>"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 
-			</a>
-		</div><!-- #item-header-avatar -->
+	<?php
 
-		<div id="item-header-content">			
+	/**
+	 * Fires before the display of the member's header meta.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'bp_before_member_header_meta' ); ?>
 
-			<h1 class="user-full-name"><?php echo bp_get_displayed_user_fullname();  ?></h1>
+	<div id="item-meta">
 
-			<?php if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() ) : ?>
-				<h2 class="user-nicename">@<?php bp_displayed_user_mentionname(); ?></h2>
-			<?php endif; ?>
+		<?php if ( bp_is_active( 'activity' ) ) : ?>
 
-			Active <span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_user_last_activity( bp_displayed_user_id() ) ); ?>"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
+			<div id="latest-update">
+
+				<?php bp_activity_latest_update( bp_displayed_user_id() ); ?>
+
+			</div>
+
+		<?php endif; ?>
+
+		<div id="item-buttons">
 
 			<?php
 
 			/**
-			 * Fires before the display of the member's header meta.
+			 * Fires in the member header actions section.
 			 *
-			 * @since 1.2.0
+			 * @since 1.2.6
 			 */
-			do_action( 'bp_before_member_header_meta' ); ?>
+			do_action( 'bp_member_header_actions' ); ?>
 
-			<div id="item-meta">
+		</div><!-- #item-buttons -->
 
-				<?php if ( bp_is_active( 'activity' ) ) : ?>
+		<?php
 
-					<div id="latest-update">
+		 /**
+		  * Fires after the group header actions section.
+		  *
+		  * If you'd like to show specific profile fields here use:
+		  * bp_member_profile_data( 'field=About Me' ); -- Pass the name of the field
+		  *
+		  * @since 1.2.0
+		  */
+		 do_action( 'bp_profile_header_meta' );
 
-						<?php bp_activity_latest_update( bp_displayed_user_id() ); ?>
+		 ?>
 
-					</div>
+	</div><!-- #item-meta -->
 
-				<?php endif; ?>
+</div><!-- #item-header-content -->
 
-				<div id="item-buttons">
-
-					<?php
-
-					/**
-					 * Fires in the member header actions section.
-					 *
-					 * @since 1.2.6
-					 */
-					do_action( 'bp_member_header_actions' ); ?>
-
-				</div><!-- #item-buttons -->
-
-				<?php
-
-				 /**
-				  * Fires after the group header actions section.
-				  *
-				  * If you'd like to show specific profile fields here use:
-				  * bp_member_profile_data( 'field=About Me' ); -- Pass the name of the field
-				  *
-				  * @since 1.2.0
-				  */
-				 do_action( 'bp_profile_header_meta' );
-
-				 ?>
-
-			</div><!-- #item-meta -->
-
-		</div><!-- #item-header-content -->
-
-	</div><!--cover-image-->
-
-</div><!--item-header-container-->
 <?php
 
 /**

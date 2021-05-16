@@ -22,12 +22,12 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
+<div id="page" class="site container-fluid no-padding">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'rk_wp_alumina' ); ?></a>
 
 	<div class="row">
 		
-		<div class="col">
+		<div class="col p-0">
 			
 			<div class="rk-wp-alumina-top-menu-wrapper">
 				

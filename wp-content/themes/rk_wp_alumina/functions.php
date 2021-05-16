@@ -138,6 +138,18 @@ function rk_wp_alumina_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Front Page Image gallery', 'rk_wp_alumina' ),
+			'id'            => 'image-gallery-1',
+			'description'   => esc_html__( 'Add widgets here.', 'rk_wp_alumina' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
 }
 add_action( 'widgets_init', 'rk_wp_alumina_widgets_init' );
 
@@ -160,7 +172,7 @@ function rk_wp_alumina_scripts() {
 	wp_style_add_data( 'rk_wp_alumina-style', 'rtl', 'replace' );
 
 
-	wp_enqueue_script( 'jQuery', get_template_directory_uri() . '/js/jquery-3.5.1.min.js', array(), '3.5.1', true );
+	//wp_enqueue_script( 'jQuery', get_template_directory_uri() . '/js/jquery-3.5.1.min.js', array(), '3.5.1', true );
 	wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/jquery.waypoints.min.js', array(), '4.0.1', true );
 	wp_enqueue_script( 'countup', get_template_directory_uri() . '/js/jquery.counterup.js', array(), '1.0.3', true );	
 	wp_enqueue_script( 'Tether', 'https://unpkg.com/@popperjs/core@2"', array(), '1.0.0', true );

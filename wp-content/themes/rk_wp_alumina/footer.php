@@ -12,19 +12,39 @@
 ?>
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'rk_wp_alumina' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'rk_wp_alumina' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'rk_wp_alumina' ), 'rk_wp_alumina', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
+
+		<div class="rk-wp-allum-footer-container">
+			
+			<div class="rk-wp-alum-footer-wrapper">
+			
+				<div class="row">					
+
+						<div class="col"></div>
+						<div class="col"></div>
+						<div class="col"></div>
+						<div class="col"></div>
+
+				</div>
+
+			</div>
+
+			<div class="rk-wp-alum-copyright-container p-0">
+			
+				<div class="row">
+					
+					<div class="col p-0">
+
+						<p>© 2021 RK-Soft, Rivikantha Herath, All Rights Reserved.</p>			
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+		</div>
+		
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

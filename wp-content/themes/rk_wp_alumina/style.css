@@ -985,6 +985,16 @@ textarea {
 	font-style:normal;
 }
 
+@font-face {
+	font-family:Open_Sans_Rg;
+	src: url("fonts/OpenSans-Regular.ttf") format("truetype");	
+	font-weight:normal;
+	font-style:normal;
+}
+
+/* General */
+
+
 
 /* Header Section */
 
@@ -1051,12 +1061,247 @@ nav#main-menu div#navbarNav ul#menu-header-menu li a{
 	position: relative;
 	display: block;
 	width: 100%;
-	height:60px;
+	height:61px;
 	background-color: #161f37;
+}
+
+ul.rk-wp-alumina-top-menu{
+
+	margin:0px;
+	padding-right: 50px;
+	text-align: right;
+	box-sizing: border-box;
 }
 
 .rk-wp-alumina-top-menu li{
 
-	list-style: none;
+	box-sizing: border-box;
+	display: inline;
+	margin-right:10px;
+	background-color: #1dd983;
+	list-style-type: none;
+	line-height: 60px;
+	padding:0px 25px;
+	float: right;
 
 }
+
+.rk-wp-alumina-top-menu li:hover{
+
+	background-color: #3b60c9;
+}
+
+.rk-wp-alumina-top-menu li a{
+
+	font-family: Roboto_Bold;
+	color:white;
+	text-decoration: none;
+}
+
+/* Carausal Slides */
+
+.carousel-caption h5{
+
+	font-family: Roboto_Bold;
+	font-size: 50px;
+	color:white; 
+
+}
+
+.carousel-caption p{
+
+	font-family: Roboto_Regular;
+	font-size: 30px;
+	color:#ffe156; 
+
+}
+
+
+/* Upcomming Events */
+
+.tribe-common .tribe-common-h6{
+
+	font-size: 28px;
+	text-transform: uppercase;
+	font-family:Roboto_Bold;
+}
+
+.tribe-events-widget{
+
+	margin-top:50px;
+}
+
+.tribe-events-widget-events-list__event-date-tag-month{
+
+	font-size: 16px;
+	text-transform: uppercase;
+	font-family:Roboto_Regular;
+}
+
+.tribe-events-widget .tribe-events-widget-events-list__event-date-tag-daynum{
+
+	font-size: 25px;
+	text-transform: uppercase;
+	font-family:Roboto_Bold;
+}
+
+.tribe-events-widget .tribe-events-widget-events-list__event-datetime-wrapper{
+
+	font-size: 12px;	
+	font-family:Roboto_Regular;
+	//font-weight: bolder;
+
+}
+
+a.tribe-events-widget-events-list__event-title-link.tribe-common-anchor-thin{
+
+	font-size: 20px;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family:Roboto_Bold;
+	color:black;
+}
+
+.tribe-events-widget-events-list__view-more.tribe-common-b1.tribe-common-b2--min-medium{
+
+	margin:50px 0px 10px 25px;
+}
+
+.tribe-events-widget-events-list__view-more.tribe-common-b1.tribe-common-b2--min-medium a{
+
+	font-size: 16px;
+	padding:5px 10px;	
+	text-decoration: none;
+	font-family:Roboto_Regular;
+	color: #2B6EC5;
+	border: 1px solid #2B6EC5;
+	border-radius: .5rem;
+
+}
+
+/* Latest News */
+
+
+.rk-alum-news-col{
+
+	background-color: #F4F4F2;
+
+}
+
+
+.rk-alum-latest-news-container{
+
+	box-sizing: border-box;
+
+	margin:50px 25px;
+	
+
+}
+
+.rk-alumina-news-title-wrapper h3{
+
+	font-size: 28px;
+	text-transform: uppercase;
+	font-family:Roboto_Bold;
+}
+
+.rk-alum-news-items-container{
+
+	box-sizing: border-box;
+	margin:50px 0px;
+	//width: 100%;
+}
+
+.rk-alum-news-text-content-wrapper{
+
+	box-sizing: border-box;
+	flex-basis: 65%;
+	//width: 100%; 
+}
+
+.rk-alum-news-item-wrapper{
+
+	margin:25px 0px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+h3.rk-alum-news-item-title{
+
+	font-size: 20px;
+	text-transform: uppercase;
+	font-family:Roboto_Bold;
+}
+
+.rk-alum-news-excerpt p{
+
+	font-size: 20px;	
+	font-family:Open_Sans_Rg;
+
+}
+
+a.rk-alum-news-item-read-more-link{
+
+	font-size: 18px;
+	color: #2B6EC5;
+	text-decoration: none;
+	font-family:Roboto_Bold;
+	text-transform: uppercase;
+	border-bottom: 3px solid transparent;
+	transition: border 0.28s cubic-bezier(0.28,1.08,1,0.96);
+}
+
+
+a.rk-alum-news-item-read-more-link:hover {
+    border-bottom-color: rgb(43, 110, 197);
+}
+
+.rk-alum-news-thumbnail{
+
+	max-width: 15%;
+	margin-right: 25px;
+}
+
+.rk-alum-news-thumbnail img{
+
+	//width: 100%;
+	height: auto;
+}
+
+/* Our Gallery */
+
+.rk-alum-gallery{
+
+	background-color: #ECF1F5;
+}
+
+.rk-alum-gallery-container{
+
+	text-align: center;
+}
+
+.rk-alum-gallery-container h2{
+
+
+	margin:50px;
+	font-family: Roboto_Bold;
+}
+
+/* Footer */
+
+.rk-wp-allum-footer-container{
+
+	text-align: center;
+}
+
+.rk-wp-alum-footer-wrapper{
+
+	background-color: #161F37;
+}
+
+.rk-wp-alum-copyright-container{
+
+	background-color: #3B60C9;
+}
+

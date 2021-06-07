@@ -14,6 +14,7 @@
  */
 do_action( 'bp_before_member_messages_loop' ); ?>
 
+
 <?php if ( bp_has_message_threads( bp_ajax_querystring( 'messages' ) ) ) : ?>
 
 	<h2 class="bp-screen-reader-text"><?php

@@ -9,70 +9,82 @@
 
 ?>
 
-<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
-	<ul>
+<div class="rk-wp-alum-buddypress-user-activity-body-container">
 
-		<?php bp_get_options_nav(); ?>
 
-		<li id="activity-filter-select" class="last">
-			<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>
-			<select id="activity-filter-by">
-				<option value="-1"><?php _e( '&mdash; Everything &mdash;', 'buddypress' ); ?></option>
+	<div class="item-list-tabs no-ajax" id="subnav" aria-label="<?php esc_attr_e( 'Member secondary navigation', 'buddypress' ); ?>" role="navigation">
+		<ul>
 
-				<?php bp_activity_show_filters(); ?>
+			<?php bp_get_options_nav(); ?>
 
-				<?php
+			<li id="activity-filter-select" class="last">
+				<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>
+				<select id="activity-filter-by">
+					<option value="-1"><?php _e( '&mdash; Everything &mdash;', 'buddypress' ); ?></option>
 
-				/**
-				 * Fires inside the select input for member activity filter options.
-				 *
-				 * @since 1.2.0
-				 */
-				do_action( 'bp_member_activity_filter_options' ); ?>
+					<?php bp_activity_show_filters(); ?>
 
-			</select>
-		</li>
-	</ul>
-</div><!-- .item-list-tabs -->
+					<?php
 
-<?php
+					/**
+					 * Fires inside the select input for member activity filter options.
+					 *
+					 * @since 1.2.0
+					 */
+					do_action( 'bp_member_activity_filter_options' ); ?>
 
-/**
- * Fires before the display of the member activity post form.
- *
- * @since 1.2.0
- */
-do_action( 'bp_before_member_activity_post_form' ); ?>
+				</select>
+			</li>
+		</ul>
+	</div><!-- .item-list-tabs -->
 
-<?php
-if ( is_user_logged_in() && bp_is_my_profile() && ( !bp_current_action() || bp_is_current_action( 'just-me' ) ) )
-	bp_get_template_part( 'activity/post-form' );
+	<?php
 
-/**
- * Fires after the display of the member activity post form.
- *
- * @since 1.2.0
- */
-do_action( 'bp_after_member_activity_post_form' );
+	/**
+	 * Fires before the display of the member activity post form.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'bp_before_member_activity_post_form' ); ?>
 
-/**
- * Fires before the display of the member activities list.
- *
- * @since 1.2.0
- */
-do_action( 'bp_before_member_activity_content' ); ?>
+	<?php
+	if ( is_user_logged_in() && bp_is_my_profile() && ( !bp_current_action() || bp_is_current_action( 'just-me' ) ) )
+		bp_get_template_part( 'activity/post-form' );
 
-<div class="activity" aria-live="polite" aria-atomic="true" aria-relevant="all">
+	/**
+	 * Fires after the display of the member activity post form.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'bp_after_member_activity_post_form' );
 
-	<?php bp_get_template_part( 'activity/activity-loop' ) ?>
+	/**
+	 * Fires before the display of the member activities list.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'bp_before_member_activity_content' ); ?>
 
-</div><!-- .activity -->
+	<div class="activity" aria-live="polite" aria-atomic="true" aria-relevant="all">
 
-<?php
+		<?php bp_get_template_part( 'activity/activity-loop' ) ?>
 
-/**
- * Fires after the display of the member activities list.
- *
- * @since 1.2.0
- */
-do_action( 'bp_after_member_activity_content' );
+	</div><!-- .activity -->
+
+	<?php
+
+	/**
+	 * Fires after the display of the member activities list.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'bp_after_member_activity_content' );
+
+	?>
+
+
+</div><!-- rk-wp-alum-buddypress-user-activity-body-container -->
+
+
+
+

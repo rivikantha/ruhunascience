@@ -25,7 +25,7 @@ do_action( 'bp_before_profile_loop_content' ); ?>
 
 				<h2><?php bp_the_profile_group_name(); ?></h2>
 
-				<table class="profile-fields">
+				<table class="table rk-wp-alum-buddyprss-profile-loop-table">
 
 					<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
 

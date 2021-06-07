@@ -10,6 +10,8 @@
 get_header();
 ?>
 
+	<h1>I am Archive!</h1>
+
 	<main id="primary" class="site-main">
 
 		<?php if ( have_posts() ) : ?>

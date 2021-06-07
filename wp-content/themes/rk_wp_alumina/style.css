@@ -749,7 +749,9 @@ textarea {
 
 .post,
 .page {
-	margin: 0 0 1.5em;
+	/*margin: 0 0 1.5em;*/
+
+	margin: 0px;
 }
 
 .updated:not(.published) {
@@ -1116,6 +1118,7 @@ ul.rk-wp-alumina-top-menu{
 
 }
 
+/* Events */
 
 /* Upcomming Events */
 
@@ -1149,7 +1152,7 @@ ul.rk-wp-alumina-top-menu{
 
 	font-size: 12px;	
 	font-family:Roboto_Regular;
-	//font-weight: bolder;
+	/*font-weight: bolder;*/
 
 }
 
@@ -1209,14 +1212,14 @@ a.tribe-events-widget-events-list__event-title-link.tribe-common-anchor-thin{
 
 	box-sizing: border-box;
 	margin:50px 0px;
-	//width: 100%;
+	/*width: 100%;*/
 }
 
 .rk-alum-news-text-content-wrapper{
 
 	box-sizing: border-box;
 	flex-basis: 65%;
-	//width: 100%; 
+	/*width: 100%;*/ 
 }
 
 .rk-alum-news-item-wrapper{
@@ -1265,7 +1268,7 @@ a.rk-alum-news-item-read-more-link:hover {
 
 .rk-alum-news-thumbnail img{
 
-	//width: 100%;
+	/*width: 100%;*/
 	height: auto;
 }
 
@@ -1292,11 +1295,7 @@ a.rk-alum-news-item-read-more-link:hover {
 
 .rk-wp-allum-footer-container{
 
-	text-align: center;
-}
-
-.rk-wp-alum-footer-wrapper{
-
+	text-align: center;	
 	background-color: #161F37;
 }
 
@@ -1304,4 +1303,779 @@ a.rk-alum-news-item-read-more-link:hover {
 
 	background-color: #3B60C9;
 }
+
+.rk-wp-alum-footer-col{
+
+	padding:25px;
+	text-align: left;
+}
+
+
+.rk-wp-alum-footer-col:first-child{
+
+	margin-right:60px;
+}
+
+.rk-wp-alum-footer-col h3{
+
+	margin-bottom: 25px;
+	font-family: Roboto_Bold;
+	font-size:20px;
+	color:white;
+}
+
+.rk-wp-alum-footer-logo-wrapper{
+
+	margin-bottom:25px;
+}
+
+.rk-wp-allum-footer-container p{
+
+	font-family: Roboto_Bold;
+	font-size:16px;
+	color:white;
+	
+}
+
+.rk-wp-alum-copyright-container p{
+
+	font-family: Roboto_Bold;
+	font-size:16px;
+	color:white;
+	line-height: 48px;
+	margin:0px;
+}
+
+/*Footer Menu*/
+
+ul.rk-wp-alumina-footer-menu{
+	list-style-type: none;
+	padding:0px;
+	margin:25px 0px 0px 0px;
+}
+
+ul.rk-wp-alumina-footer-menu li{
+
+	line-height: 35px;
+} 
+
+ul.rk-wp-alumina-footer-menu li a{
+	text-decoration: none;
+	color:white;
+	font-family: Roboto_Regular;
+	font-size:16px;	
+}
+
+ul.rk-wp-alumina-footer-menu li a::before{
+
+	content:"»\00a0\00a0\00a0";
+}
+
+
+/* Footer Social Links */
+
+.rk-wp-alum-social-media-icons-footer-wrapper{
+
+	position: relative;
+	display: flex;
+	flex-direction: row;
+
+}
+
+.rk-wp-alum-social-icons{
+
+	margin:25px;
+	font-size: 25px;
+	color:white;
+}
+
+
+/* Single Page (Buddypress) */
+
+.rk-wp-alum-single-page-title-row{
+
+	background-color: #ecf1f5;
+}
+
+.rk-wp-alum-single-page-title-row header{
+
+	width: 100%;
+
+}
+
+.rk-wp-alum-single-page-title-row header h1{
+
+	position: relative;
+	font-family: Roboto_Bold;
+	font-size: 60px;
+	text-transform: uppercase;
+}
+
+
+/* Buddypress Members Page */
+
+.entry-content{
+
+	margin:0px;
+}
+
+#buddypress div.dir-search{
+
+	position: relative;
+	margin:0px;
+	clear: both;
+	float: none;
+}
+
+.rk-wp-alum-buddypress-dir-search-form-container{
+
+	background-color: #ecf1f5;
+
+	padding:30px 0px;
+
+	height: 150px;
+}
+
+
+.rk-wp-alum-buddypress-dir-search-form-container form#search-members-form{
+
+	position: relative;
+	display: flex;
+	flex-shrink: 1;
+	align-content:center;
+	justify-content: center;
+	width: 100%;
+}
+
+.rk-wp-alum-buddypress-dir-search-form-container form#search-members-form .input-group{	
+  
+	display: flex;
+	align-content:center;
+	justify-content: center;	
+	border-radius: 3px;
+	background-color: white;
+	border: none;
+	padding: 5px;
+	flex-basis: 500px;	
+}
+
+.rk-wp-alum-buddypress-dir-search-form-container form#search-members-form .input-text{
+
+	display: flex;
+	flex-grow:1;
+	align-content:center;
+	justify-content: center;
+}
+
+.rk-wp-alum-buddypress-dir-search-form-container form#search-members-form input[type=text]{
+	
+	min-width: 0px;
+	flex-shrink: 1;
+	flex-basis:500px;	
+	line-height: 30px;
+	border: 1px solid transparent;	
+    border-radius: 5px;
+    color: #414141;
+	/*display: inline-block;*/
+	float:left;
+	font-family: "Trueno",sans-serif;
+	font-size: 16px;
+	font-weight: 200;
+	
+}
+
+.rk-wp-alum-buddypress-dir-search-form-container form#search-members-form input[type=submit]{
+	
+	line-height: 30px;
+	color: white;
+	cursor: pointer;
+	font-family: Roboto_Regular;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 1.17px;	
+	text-transform: uppercase;
+	padding:5px;
+	border-radius: 4px;
+	background-color: #0579b8;
+	border-color: transparent;
+}
+
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+
+
+#members-dir-search{
+
+	position: relative;
+	margin:0px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	/*background-color: #ecf1f5;*/
+	
+
+}
+
+.rk-wp-alum-buddypress-members-dir-nav-container{
+
+	position: absolute;
+	top:-170px;
+	/*background-color: #ecf1f5;*/
+	padding:30px 0px;	
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.rk-wp-alum-buddypress-members-dir-nav-container div#subnav ul{
+
+	margin-right:30px;
+}
+
+
+.rk-wp-alum-buddypress-members-dir-nav-container div#subnav label{
+
+	font-family:Roboto_Bold;
+	text-transform: uppercase;
+	font-size: 18px;
+	margin-right: 10px;
+}
+
+.rk-wp-alum-buddypress-members-dir-nav-container div#subnav 
+select#members-order-by{
+
+	border: 1px solid #3b60c9;;	
+    border-radius: 5px;
+    padding:0.5rem;
+    color: #414141;
+    background-color:white;		
+	font-family: "Trueno",sans-serif;
+	font-size: 16px;
+	line-height: 30px;
+	font-weight: 200;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;       /* Remove default arrow */
+	background: url(img/dropDownArrow.png) 96% / 15% no-repeat white;   /* Add custom arrow */
+}
+
+.rk-wp-alum-buddypress-members-dir-nav-container div#subnav 
+select#members-order-by::-ms-expand {
+    display: none; /* Hide the default arrow in Internet Explorer 10 and Internet Explorer 11 */
+}
+
+/* Buddypress Member Loop */
+
+.rk-wp-alum-buddypress-members-loop-item-wrapper{
+
+	margin:50px;
+
+}
+
+.rk-wp-alum-buddypress-members-loop-item-wrapper li{
+
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.rk-wp-alum-buddypress-members-loop-item-wrapper div.item{
+
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.rk-wp-alum-buddypress-members-loop-item-wrapper .item-avatar{
+
+	margin-bottom:25px;
+}
+
+.rk-wp-alum-buddypress-members-loop-item-wrapper .item-avatar img.avatar{
+
+	border-radius: 10px;
+	width: 200px;
+	height: auto;
+
+}
+
+.rk-wp-alum-buddypress-members-loop-item-wrapper div.item div.item-title a{
+
+	font-family:Roboto_Bold;
+	font-size:25px;
+	color:#1d1e20;
+	text-decoration: none;
+}
+
+.rk-wp-alum-buddypress-members-loop-item-email-wrapper span{
+
+	font-family:Roboto_Regular;
+	font-size: 20px;
+	color:#3b60c9;
+}
+
+.rk-wp-alum-buddypress-members-loop-item-tel-wrapper span{
+
+	font-family:Roboto_Regular;
+	font-size: 20px;
+	color:#7a7a7b;
+}
+
+
+/* Buddypress Member Profile */
+
+/* Coveer Image */
+
+#buddypress #cover-image-container{
+
+	z-index: 1;
+}
+
+.rk-wp-alum-buddypress-cover-image-container{
+
+	position: relative;
+	padding:0px;
+	height: 400px;
+
+}
+
+#buddypress .rk-wp-alum-buddypress-cover-image-container div#item-header-cover-image{
+
+	padding-top:10%;
+	
+}
+
+
+.rk-wp-alum-buddypress-profile-title{
+
+	position: relative;
+}
+
+.rk-wp-alum-buddypress-profile-title h1{
+	
+	margin:0px;
+	margin-bottom:25px;
+	font-family:Roboto_Bold;
+	font-size: 60px;
+	text-transform: uppercase;
+	color:white;
+
+}
+
+
+#buddypress div#item-header img.avatar{
+
+	border-radius: 10px;
+	margin-left:45px;
+	margin-top:10px;
+}
+
+#buddypress div#item-header div#item-header-content{
+
+	margin-top:90px;
+}
+
+
+#buddypress div#item-header div#item-header-content h2{
+
+	font-family: Roboto_Regular;
+	font-size:20px;
+	color:white;
+}
+
+#buddypress div#item-header div#item-header-content span{
+
+	font-family: Roboto_Regular;
+	font-size:20px;
+	color:white;
+}
+
+.rk-wp-alum-buddypress-user-profile-item-buttons-wrapper{
+
+	float: right;
+	/*width: 31%;*/
+	padding: 25px;
+	/*background-color: red;*/
+	margin-top: 4rem;
+
+}
+
+.rk-wp-alum-buddypress-user-profile-item-buttons-wrapper #item-buttons a{
+
+	background: transparent;
+	border: 1px solid white;
+	border-radius: 5px;
+	color: white;
+	font-family:Roboto_Bold;
+	font-size: small;
+	cursor: pointer;
+	outline: none;
+	padding: 4px 10px;
+	text-align: center;
+	text-decoration: none;
+
+}
+
+
+/* Buddypress User Profile Member Primary Navigation */
+
+.rk-wp-alum-buddypress-user-profile-item-nav{
+
+	position: relative;
+}
+
+.rk-wp-alum-buddypress-user-profile-item-nav-container{
+
+	background-color: #161f37;
+	/*position: absolute;*/
+	/*bottom:2px;*/
+	z-index: 0;
+}
+
+.rk-wp-alum-buddypress-user-profile-item-nav-container 
+.rk-wp-alum-buddypress-user-profile-item-nav-wrapper 
+#item-nav #object-nav ul{
+
+	margin:0px;
+	margin-left:250px;
+}
+
+.rk-wp-alum-buddypress-user-profile-item-nav-container 
+.rk-wp-alum-buddypress-user-profile-item-nav-wrapper 
+#item-nav #object-nav ul li a{
+
+	background-color: #161f37;
+	padding: 15px;
+	color: #6d7982;
+	opacity: 0.9;
+	font-family:Roboto_Regular;
+	font-weight: 200;
+	border-right: 1px solid #6d7982;
+}
+
+.rk-wp-alum-buddypress-user-profile-item-nav-container 
+.rk-wp-alum-buddypress-user-profile-item-nav-wrapper 
+#item-nav #object-nav ul li.selected a{
+
+	color: white;
+}
+
+/* Buddypress User Profile Body */
+
+/* Information Section */
+
+.table td, .table th{
+
+	border-top: 1px solid black;
+}
+
+.rk-wp-alum-buddypress-user-profile-information{
+
+	padding:30px 30px 0px 50px;
+
+	background-color: #ecf1f5;
+}
+
+.rk-wp-alum-buddypress-user-profile-information .user-profile-information-title h1{
+
+	font-family: Roboto_Bold;
+	font-size:30px;
+	color:#161f37;
+}
+
+.rk-wp-alum-buddypress-user-profile-information .user-profile-information-table-wrapper table 
+td{
+
+	font-family: Roboto_Regular;
+	font-size:20px;
+	color:#161f37;
+}
+
+
+/* Buddypress User Profile Body Personal Nav Bar */
+
+#buddypress div.item-list-tabs ul li.selected a, #buddypress div.item-list-tabs ul li.current a{
+
+	background-color: white;
+	color:black;
+	font-family: Roboto_Bold;
+	font-size:18px;
+}
+
+#buddypress .rk-wp-alum-buddypress-user-profile-body div.item-list-tabs#subnav{
+
+	margin: 25px 0;
+}
+
+#buddypress .rk-wp-alum-buddypress-user-profile-body div.item-list-tabs ul li a{
+
+	background-color: white;
+	color:#7a7a7b;
+	font-family: Roboto_Bold;
+	font-size:18px;
+	border-right: 1px solid black;
+	line-height: 12px;
+}
+
+
+#buddypress .rk-wp-alum-buddypress-user-profile-body div.item-list-tabs#subnav ul li.last{
+
+	font-family: Roboto_Bold;
+	font-size:18px;
+	color:#7a7a7b;
+}
+
+
+#buddypress .rk-wp-alum-buddypress-user-profile-body div.item-list-tabs#subnav ul li.last 
+select,#buddypress div.item-list-tabs ul li.last select{
+
+	border: 1px solid #3b60c9;
+	line-height: 20px;
+    border-radius: 5px;
+    max-width: 200px;
+    width: 180px;
+    /*height:20px;*/
+    padding:5px 1px;
+    /*padding-right:10rem;*/
+    color: #414141;
+    background-color:white;		
+	font-family: "Trueno",sans-serif;
+	font-size: 16px;
+	line-height: 30px;
+	font-weight: 200;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;       /* Remove default arrow */
+	background: url(img/dropDownArrow.png) 96% / 15% no-repeat white;   /* Add custom arrow */
+}
+
+/* Buddypress Activity Body */
+
+.rk-wp-alum-buddypress-user-activity-body-container{
+
+	padding:0rem 4rem;
+}
+
+#buddypress .rk-wp-alum-buddypress-user-activity-body-container 
+form#whats-new-form p.activity-greeting,#buddypress form#whats-new-form 
+p.activity-greeting{
+
+	font-family: Roboto_Regular;
+	font-size:18px;
+}
+
+#buddypress a.button, #buddypress input[type="submit"], #buddypress input[type="button"], 
+#buddypress input[type="submit"]{
+
+	background: white;
+	border: 1px solid #161F37;
+	color: #161F37;
+	font-family: Roboto_Regular;
+	font-size: 16px;
+	cursor: pointer;
+	outline: none;
+	padding: 4px 10px;
+	text-align: center;
+	text-decoration: none;
+}
+
+#buddypress a.button:hover, #buddypress input[type="submit"]:hover, 
+#buddypress input[type="button"]:hover {
+
+	background: white;
+	border: 1px solid blue;
+	color: blue;
+	outline: none;
+	text-decoration: none;
+}
+
+#buddypress .rk-wp-alum-buddypress-user-activity-body-container .activity-list 
+li .activity-content. #buddypress .activity-list li .activity-content{
+
+	color: #161F37;
+	font-family: Roboto_Regular;
+	font-size: 16px;
+}
+
+#buddypress .rk-wp-alum-buddypress-user-activity-body-container #activity-stream p, 
+#buddypress #activity-stream p{
+
+	color: #161F37;
+	font-family: Roboto_Regular;
+	font-size: 16px;
+
+}
+
+#buddypress .rk-wp-alum-buddypress-user-activity-body-container a.activity-time-since,
+#buddypress .rk-wp-alum-buddypress-activity-container a.activity-time-since{
+
+	color: blue;
+	font-family: Roboto_Regular;
+	font-size: 12px;
+
+}
+
+/* Buddypress User Profile Loop */
+
+.rk-wp-alum-buddypress-user-profile-body .profile{
+
+	margin:2rem 5rem;
+}
+
+#buddypress div.profile h2{
+
+	font-family:Roboto_Bold;
+	font-size:2.5rem;
+	margin-bottom:2.4rem;
+}
+
+table.rk-wp-alum-buddyprss-profile-loop-table td{
+
+	font-family: Roboto_Regular;
+	font-size:1.125rem;
+}
+
+
+/* Buddypress Messages */
+
+#send_message_form{
+
+	margin:2rem 5rem;
+}
+
+.rk-wp-alum-buddypress-user-profile-body .messages{
+
+	margin:0.625rem;
+}
+
+#message-thread{
+
+	margin:1rem;
+}
+
+#message-thread h2#message-subject{
+
+	font-family: Roboto_Bold;
+	font-size:1.25rem;
+	text-transform: capitalize;
+}
+
+#message-thread p#message-recipients{
+
+	font-family: Roboto_Regular;
+	font-size:1.125rem;
+	text-transform: capitalize;
+}
+
+#message-thread .message-content p{
+
+	font-family: Roboto_Regular;
+	font-size:1.125rem;
+	/*text-transform: capitalize;*/
+}
+
+
+/* Template Notices */
+
+
+.template-notices-wrapper{
+
+	padding-top:1rem;
+}
+
+/* Activity Main Page */
+
+.rk-wp-alum-buddypress-activity-container{
+
+	padding:2rem;
+	background-color: #F4F4F2;
+}
+
+
+#buddypress .rk-wp-alum-buddypress-activity-container .item-list-tabs.activity-type-tabs 
+ul li a{
+
+	background-color: white;
+	color: #7a7a7b;
+	font-family: Roboto_Bold;
+	font-size: 18px;	
+	line-height: 12px;
+}
+
+#buddypress .rk-wp-alum-buddypress-activity-container .item-list-tabs.activity-type-tabs 
+ul li:not(:last-child) a{
+
+	border-right: 1px solid #858586;
+}
+
+
+#buddypress .rk-wp-alum-buddypress-activity-container #subnav.item-list-tabs 
+ul li a{
+
+	background-color: white;
+	color: #7a7a7b;
+	font-family: Roboto_Bold;
+	font-size: 18px;
+	/*border-right: 1px solid black;*/
+	line-height: 12px;
+}
+
+#buddypress .rk-wp-alum-buddypress-activity-container #subnav.item-list-tabs 
+ul li:not(:first-child) a{
+	
+	border-left: 1px solid #858586;
+	
+}
+
+/* Single Page */
+
+
+
+.rk-wp-alum-single-page-title-wrapper{
+
+	height:300px;
+	width: 100%;
+	position: relative;
+	padding:0px;	
+}
+
+.rk-wp-alum-single-page-title-wrapper h1{
+
+	position: relative;
+	top:20%;
+	font-family:Roboto_Bold;
+	text-transform: uppercase;
+	font-size:4.5rem;
+}
+
+.rk-wp-alum-single-page-title-wrapper img.rk-wp-alum-single-page-wallpaper-img{
+
+	height:300px;
+	width: 100%;
+	top:0px;
+	left:0px;
+	position: absolute;		
+	object-fit: none;
+}
+
+.rk-wp-alum-single-page-title-wrapper::after{
+
+	content: "";
+	width: 100%;
+	height: 300px;
+	display: block;
+	position: absolute;
+	background-color: rgba(114, 114, 114, 0.2);
+	background: radial-gradient(circle, rgba(0,0,0,0.06484592127866773) 0%, rgba(0,0,0,0.4373949408865109) 100%);
+	top: 0px;
+	left: 0px;
+	   
+}
+
 

@@ -49,64 +49,104 @@ do_action( 'bp_before_members_loop' ); ?>
 
 	<ul id="members-list" class="item-list" aria-live="assertive" aria-relevant="all">
 
-	<?php while ( bp_members() ) : bp_the_member(); ?>
+	<div class="row rk-wp-alum-buddypress-members-loop-container">
 
-		<li <?php bp_member_class(); ?>>
-			<div class="item-avatar">
-				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
-			</div>
+		<?php while ( bp_members() ) : bp_the_member(); ?>
 
-			<div class="item">
-				<div class="item-title">
-					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
+		<div class="col-12 col-sm-6 col-md-4 rk-wp-alum-buddypress-members-loop-item">
 
-					<?php if ( bp_get_member_latest_update() ) : ?>
+			<div class="rk-wp-alum-buddypress-members-loop-item-wrapper">
 
-						<span class="update"> <?php bp_member_latest_update(); ?></span>
+				<li <?php bp_member_class(); ?>>
+					<div class="item-avatar">
+						<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar('type=full'); ?></a>
+					</div>
 
-					<?php endif; ?>
+					<div class="item">
+						<div class="item-title">
+							<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
 
-				</div>
+							<?php //if ( bp_get_member_latest_update() ) : ?>
 
-				<div class="item-meta"><span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span></div>
+								<!-- <span class="update"> <?php //bp_member_latest_update(); ?></span> -->
 
-				<?php
+							<?php //endif; ?>
 
-				/**
-				 * Fires inside the display of a directory member item.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_directory_members_item' ); ?>
+						</div>
 
-				<?php
-				 /***
-				  * If you want to show specific profile fields here you can,
-				  * but it'll add an extra query for each member in the loop
-				  * (only one regardless of the number of fields you show):
-				  *
-				  * bp_member_profile_data( 'field=the field name' );
-				  */
-				?>
-			</div>
+						<!-- <div class="item-meta"><span class="activity" data-livestamp="<?php bp_core_iso8601_date( bp_get_member_last_active( array( 'relative' => false ) ) ); ?>"><?php bp_member_last_active(); ?></span></div> -->
 
-			<div class="action">
+						<div class="rk-wp-alum-buddypress-members-loop-item-email-wrapper">
+							
+							<span><i class="far fa-envelope"></i> <?php bp_member_user_email() ?></span>
 
-				<?php
+						</div>
 
-				/**
-				 * Fires inside the members action HTML markup to display actions.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_directory_members_actions' ); ?>
+						<div class="rk-wp-alum-buddypress-members-loop-item-tel-wrapper">
+							
+							<span>
 
-			</div>
+								<?php
 
-			<div class="clear"></div>
-		</li>
+									$tel = bp_get_member_profile_data( 'field=Telephone number' ); 
 
-	<?php endwhile; ?>
+									if($tel){
+
+										echo '<i class="fas fa-phone"></i> '.$tel;
+									}
+
+								?>
+
+							</span>
+
+						</div>
+
+
+						
+
+						<?php
+
+						/**
+						 * Fires inside the display of a directory member item.
+						 *
+						 * @since 1.1.0
+						 */
+						do_action( 'bp_directory_members_item' ); ?>
+
+						<?php
+						 /***
+						  * If you want to show specific profile fields here you can,
+						  * but it'll add an extra query for each member in the loop
+						  * (only one regardless of the number of fields you show):
+						  *
+						  * bp_member_profile_data( 'field=the field name' );
+						  */
+						?>
+					</div>
+
+					<div class="action">
+
+						<?php
+
+						/**
+						 * Fires inside the members action HTML markup to display actions.
+						 *
+						 * @since 1.1.0
+						 */
+						do_action( 'bp_directory_members_actions' ); ?>
+
+					</div>
+
+					<div class="clear"></div>
+				</li>
+
+			</div><!-- rk-wp-alum-buddypress-members-loop-item-wrapper -->
+
+		</div><!-- rk-wp-alum-buddypress-members-loop-item -->
+
+		<?php endwhile; ?>
+
+	</div><!-- rk-wp-alum-buddypress-members-loop-container -->
 
 	</ul>
 

@@ -51,11 +51,12 @@ if ( ! function_exists( 'rk_wp_alumina_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
+		// This theme uses wp_nav_menu() in 3 locations.
 		register_nav_menus(
 			array(
 				'menu-1' => esc_html__( 'Primary', 'rk_wp_alumina' ),
 				'menu-2' => esc_html__( 'Top Nav', 'rk_wp_alumina' ),
+				'rk-wp-footer-menu' => esc_html__( 'Footer Nav', 'rk_wp_alumina' ),
 			)
 		);
 
@@ -214,4 +215,53 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+
+//Buddypress custom avatar sizes
+
+define ( 'BP_AVATAR_THUMB_WIDTH', 60 );
+define ( 'BP_AVATAR_THUMB_HEIGHT', 60 );
+define( 'BP_AVATAR_FULL_WIDTH', 200);
+define( 'BP_AVATAR_FULL_HEIGHT', 200 );
+
+function your_theme_cover_image_callback( $params = array() ) {
+    if ( empty( $params ) ) {
+        return;
+    }
+ 
+    return '
+        /* Cover image - Do not forget this part */
+        #buddypress #header-cover-image {
+            height: ' . $params["height"] . 'px;
+            background-image: url(' . $params['cover_image'] . ');
+        }
+    ';
+} 
+
+
+function your_theme_cover_image_css( $settings = array() ) {
+    /**
+     * If you are using a child theme, use bp-child-css
+     * as the theme handel
+     */
+    $theme_handle = 'bp-parent-css';
+ 
+    $settings['theme_handle'] = $theme_handle;
+
+    $settings['height'] = 400;
+ 
+    /**
+     * Then you'll probably also need to use your own callback function
+     * <a class="bp-suggestions-mention" href="https://buddypress.org/members/see/" rel="nofollow">@see</a> the previous snippet
+     */
+     $settings['callback'] = 'your_theme_cover_image_callback';
+ 
+    return $settings;
+}
+add_filter( 'bp_before_members_cover_image_settings_parse_args', 'your_theme_cover_image_css', 10, 1 );
+add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'your_theme_cover_image_css', 10, 1 );
+
+
+
+
 

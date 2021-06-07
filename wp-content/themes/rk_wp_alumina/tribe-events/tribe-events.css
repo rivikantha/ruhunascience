@@ -1,0 +1,222 @@
+/*Top Bar Css Treibe Event*/
+
+/* Font Faces */
+
+@font-face {
+	font-family:Roboto_Bold;
+	src: url("../fonts/Roboto-Bold.ttf") format("truetype");	
+	font-weight:bold;
+	font-style:normal;
+}
+
+@font-face {
+	font-family:Roboto_Regular;
+	src: url("../fonts/Roboto-Regular.ttf") format("truetype");	
+	font-weight:normal;
+	font-style:normal;
+}
+
+@font-face {
+	font-family:Open_Sans_Rg;
+	src: url("../fonts/OpenSans-Regular.ttf") format("truetype");	
+	font-weight:normal;
+	font-style:normal;
+}
+
+.tribe-common .tribe-common-l-container{
+
+	max-width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	width: 100%;
+
+}
+
+.rk-wp-alum-event-header-container{
+
+	background-color: #f7f7f7;
+}
+
+
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-header--has-event-search{
+
+	background-color: #F4F4F2;
+	padding:10px 50px;
+	margin: 0px -57px 20px -57px;
+	width: auto;
+}
+
+.tribe-common--breakpoint-medium.tribe-events 
+.tribe-events-header--has-event-search 
+.tribe-events-header__top-bar{
+
+	width: 250px;
+	margin-bottom:0px;
+	/*float:left;*/
+}
+
+.tribe-common--breakpoint-medium.tribe-events 
+.tribe-events-header--has-event-search 
+.tribe-events-header__events-bar{
+
+	width:500px;
+	margin-bottom:0px;
+	/*float:left;*/
+}
+
+.tribe-common--breakpoint-medium.tribe-events 
+.tribe-events-header--has-event-search .tribe-events-header__top-bar{
+
+	flex-basis: 400px;
+	flex-grow: 0;
+}
+
+input#tribe-events-events-bar-keyword{
+
+	border:solid 1px grey;
+	margin-right:0.625rem;
+	padding:10px;
+}
+
+.tribe-events .tribe-events-c-events-bar__search-container{
+	background-color: transparent;
+}
+
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-c-search__button{
+
+	margin-left:0.625rem;
+}
+
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-l-container{
+
+	padding-top:0px;
+}
+
+.tribe-events .tribe-events-c-view-selector__content{
+
+	background-color: transparent;
+}
+
+
+.tribe-common--breakpoint-full.tribe-events .tribe-events-c-top-bar__datepicker-desktop{
+
+	font-family: Roboto_Regular;
+	font-size: 1rem;
+	color: gray;
+	text-transform: capitalize;
+}
+
+.tribe-events .tribe-events-c-top-bar__datepicker-separator{
+
+	color: gray;
+}
+
+
+.tribe-events .tribe-events-calendar-list__month-separator{
+
+	justify-content: center;
+	background-color: #161F37;	
+	padding: 15px 0px;
+	width: auto;
+	margin-right:-57px;
+	margin-left:-57px;
+
+}
+
+.tribe-common--breakpoint-medium.tribe-common .tribe-common-h6--min-medium{
+
+	font-family:Roboto_Bold;
+	font-size:1.5625rem;
+	color:white;
+	text-transform: uppercase;
+}
+
+
+/* Event Content */
+
+/* Event Date */
+
+.tribe-events .tribe-events-calendar-list__event-date-tag-weekday{
+
+	font-family: Roboto_Bold;
+	font-size:1.875rem;
+	color:white;
+	text-transform: uppercase;
+	background-color: #3B60C9;
+	border-radius: 5px 5px 0px 0px;
+}
+
+.tribe-events-calendar-list__event-date-tag-daynum{
+
+	font-family: Roboto_Bold;
+	font-size:1.875rem;
+	text-transform: uppercase;
+	background-color: #DBE5F3;
+	color:white;
+	border-radius: 0px 0px 5px 5px;
+}
+
+
+/* Event Body */
+
+.tribe-common .tribe-common-b2{
+
+	font-family: Roboto_Regular;
+	color:grey;
+}
+
+.tribe-common--breakpoint-medium.tribe-common .tribe-common-h4--min-medium{
+
+	font-size:2.2rem;
+}
+
+a.tribe-events-calendar-list__event-title-link.tribe-common-anchor-thin:hover{
+
+	border-bottom: 1px solid transparent;
+}
+
+.tribe-events-calendar-list__event-description.tribe-common-b2 p{
+
+	font-family: Open_Sans_Rg;
+	font-size:1.125rem;
+	/*color:#747474;*/
+	color:#4C4C4C;
+	font-style: italic;
+}
+
+img.tribe-events-calendar-list__event-featured-image{
+
+	transition: opacity 1s,transform 1s;
+}
+
+img.tribe-events-calendar-list__event-featured-image:hover{
+
+	opacity: .9;
+	transform: scale3d(1.1,1.1,1);
+}
+
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-calendar-list-nav{
+
+	padding:0px;
+	border-top:1px solid grey;
+	border-bottom:1px solid #4C4C4C;
+	padding: 5px 0px;
+}
+
+
+
+li.tribe-events-c-nav__list-item a span{
+
+	font-family: Roboto_Bold;
+	font-size:1.125rem;
+	/*background-color: red;*/
+}
+
+li.tribe-events-c-nav__list-item button span{
+
+	font-family: Roboto_Bold;
+	font-size:1.125rem;
+	/*background-color: red;*/
+}

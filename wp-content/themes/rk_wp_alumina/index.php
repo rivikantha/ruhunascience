@@ -14,6 +14,7 @@
 
 get_header();
 ?>
+	<h1>I am Index!</h1>
 
 	<main id="primary" class="site-main">
 
@@ -30,6 +31,9 @@ get_header();
 
 			/* Start the Loop */
 			while ( have_posts() ) :
+
+				echo "<h1>Gonzopera 123455</h1>"
+
 				the_post();
 
 				/*
